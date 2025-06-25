@@ -2,8 +2,8 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { LoadingSpinner } from "./LoadingSpinner";
-import type { LayoutProps } from "../types/sharedTypes";
+import { LoadingSpinner } from "../common/LoadingSpinner";
+import type { LayoutProps } from "../../types/sharedTypes";
 
 export const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (

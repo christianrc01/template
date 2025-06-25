@@ -1,10 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { UsersPage } from "./features/users/pages/UsersPage";
-import { Layout } from "./shared/components/Layouts";
+import { Layout } from "./shared/components/layout/Layout";
 import { HomePage } from "./features/home/pages/HomePage";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { NotFoundPage } from "./shared/pages/NotFoundPage";
+import { ErrorBoundary } from "./shared/components/error/ErrorBoundary";
 
 const NotFoundWithLayout = () => (
   <Layout>
@@ -33,7 +34,9 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <ErrorBoundary>
+        <RouterProvider router={router} />
+      </ErrorBoundary>
     </Provider>
   );
 }

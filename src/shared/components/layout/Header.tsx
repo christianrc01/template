@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { useAppSelector } from "../../app/hooks";
-import { Button } from "./Button";
+import { useAppSelector } from "../../../app/hooks";
+import { Button } from "../common/Button";
 
 export const Header = () => {
   const { user } = useAppSelector((state) => state.auth);

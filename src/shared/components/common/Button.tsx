@@ -1,4 +1,4 @@
-import type { ButtonProps } from "../types/sharedTypes";
+import type { ButtonProps } from "../../types/sharedTypes";
 
 export const Button = ({
   variant = "primary",
