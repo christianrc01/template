@@ -1,4 +1,5 @@
 import React from "react";
+import * as Sentry from "@sentry/react";
 import { ErrorFallback } from "./ErrorFallback";
 import type {
   IErrorBoundaryProps,
@@ -15,12 +16,20 @@ export class ErrorBoundary extends React.Component<
   }
 
   static getDerivedStateFromError(error: Error): IErrorBoundaryState {
+    Sentry.captureException(error); // Capture the error and send it to Sentry
     return { hasError: true, error };
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    // Capture additional context with Sentry
+    Sentry.withScope((scope) => {
+      Object.keys(errorInfo).forEach((key) => {
+        scope.setExtra(key, errorInfo[key as keyof React.ErrorInfo]);
+      });
+      Sentry.captureException(error);
+    });
+
     console.error("ErrorBoundary caught:", error, errorInfo);
-    // TODO: Send to sentry
   }
 
   handleReset = () => {

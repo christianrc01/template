@@ -14,8 +14,8 @@ dist-ssr
 
 # Shared files
 .env
-.env.local
-.env.development
+.env*
+!.env.example
 
 # Package files
 package-lock.json
