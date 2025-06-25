@@ -2,6 +2,7 @@ import path from "path";
 import { defineConfig } from "vitest/config";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
+import proxyRules from "./src/app/config/proxyRules";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -17,25 +18,7 @@ export default defineConfig({
     setupFiles: "./src/setupTests.ts",
   },
   server: {
-    proxy: {
-      "/api": {
-        target: "https://localhost:7058/api/",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api/, ""),
-      },
-      "/api/sentry": {
-        target: "https://sentry.io",
-        changeOrigin: true,
-        secure: false,
-        rewrite: (path) => path.replace(/^\/api\/sentry/, ""),
-        configure: (proxy) => {
-          proxy.on("proxyReq", (proxyReq) => {
-            proxyReq.setHeader("Content-Type", "application/x-sentry-envelope");
-          });
-        },
-      },
-    },
+    proxy: proxyRules,
   },
   build: {
     outDir: "dist",

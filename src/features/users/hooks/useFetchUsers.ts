@@ -1,37 +1,17 @@
-import { useCallback, useEffect } from "react";
+import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import {
-  fetchUsersStart,
-  fetchUsersSuccess,
-  fetchUsersFailure,
-  selectAllUsers,
-} from "../slices/usersSlice";
-import fetchUsers from "../services/usersService";
+import { selectAllUsers, fetchUsers } from "../slices/usersSlice";
 
 function useFetchUsers() {
   const dispatch = useAppDispatch();
   const users = useAppSelector(selectAllUsers);
   const { loading, error } = useAppSelector((state) => state.users);
 
-  const loadUsers = useCallback(async () => {
-    dispatch(fetchUsersStart());
-    try {
-      const users = await fetchUsers();
-      dispatch(fetchUsersSuccess(users));
-    } catch (err) {
-      dispatch(
-        fetchUsersFailure(
-          err instanceof Error ? err.message : "An unknown error occurred"
-        )
-      );
-    }
+  useEffect(() => {
+    dispatch(fetchUsers());
   }, [dispatch]);
 
-  useEffect(() => {
-    loadUsers();
-  }, [loadUsers]);
-
-  return { users, loading, error, retry: loadUsers };
+  return { users, loading, error, retry: () => dispatch(fetchUsers()) };
 }
 
 export default useFetchUsers;

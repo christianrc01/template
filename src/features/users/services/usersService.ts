@@ -1,9 +1,11 @@
-import type { User } from "../../../shared/types/IUser";
-
-async function fetchUsers(): Promise<User[]> {
-  const response = await fetch("https://jsonplaceholder.typicode.com/users");
-  if (!response.ok) throw new Error("Failed to fetch users");
-  return response.json();
-}
-
-export default fetchUsers;
+export const USERS_ENDPOINTS = {
+  getUsers: {
+    path: "/getUsers",
+    target: `https://jsonplaceholder.typicode.com/users`,
+  },
+  createUser: {
+    path: "/createUser",
+    target: `https://jsonplaceholder.typicode.com/users`,
+  },
+  // Add more endpoints as needed
+};

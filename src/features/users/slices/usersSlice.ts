@@ -4,6 +4,7 @@ import {
   type PayloadAction,
 } from "@reduxjs/toolkit";
 import type { User, UsersState } from "../../../shared/types/IUser";
+import type { ApiCallPayload } from "../../../shared/types/IMiddleware";
 
 const usersAdapter = createEntityAdapter<User, number>({
   selectId: (user) => user.id,
@@ -37,6 +38,19 @@ const usersSlice = createSlice({
     removeUser: usersAdapter.removeOne,
   },
 });
+
+export const apiCall = (payload: ApiCallPayload) => ({
+  type: "API_CALL",
+  payload,
+});
+
+export const fetchUsers = () =>
+  apiCall({
+    url: "/getUsers",
+    method: "GET",
+    onSuccess: fetchUsersSuccess.type,
+    onError: fetchUsersFailure.type,
+  });
 
 export const {
   fetchUsersStart,
