@@ -1,0 +1,16 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`LoadingSpinner Component > matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-label="Loading..."
+    class="grid place-items-center h-64"
+    role="status"
+  >
+    <div
+      aria-hidden="true"
+      class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"
+    />
+  </div>
+</DocumentFragment>
+`;
