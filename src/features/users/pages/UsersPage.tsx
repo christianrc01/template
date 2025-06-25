@@ -1,10 +1,10 @@
-import { LoadingSpinner } from "../../../shared/components/common/LoadingSpinner";
-import { ErrorMessage } from "../../../shared/components/error/ErrorMessage";
-import { UserCard } from "../components/UserCard";
-import { useUsers } from "../hooks/useUsers";
+import LoadingSpinner from "../../../shared/components/common/LoadingSpinner";
+import  ErrorMessage  from "../../../shared/components/error/ErrorMessage";
+import UserCard from "../components/UserCard";
+import useFetchUsers from "../hooks/useFetchUsers";
 
-export const UsersPage = () => {
-  const { users, loading, error } = useUsers();
+function UsersPage() {
+  const { users, loading, error } = useFetchUsers();
 
   if (loading)
     return (
@@ -24,4 +24,6 @@ export const UsersPage = () => {
       </div>
     </div>
   );
-};
+}
+
+export default UsersPage;

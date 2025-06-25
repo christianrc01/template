@@ -7,8 +7,8 @@ import {
   vi,
   type MockedFunction,
 } from "vitest";
-import { useUsers } from "../../hooks/useUsers";
-import { fetchUsers } from "../../services/usersApi";
+import useFetchUsers from "../../hooks/useFetchUsers";
+import fetchUsers from "../../services/usersService";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import {
   fetchUsersFailure,
@@ -18,10 +18,10 @@ import {
 import { mockUsers } from "../data/mockUsers";
 
 // Mock from useAppSelector
-vi.mock("../../services/usersApi");
+vi.mock("../../services/usersService");
 vi.mock("../../../../app/hooks");
 
-describe("useUsers hook", () => {
+describe("useFetchUsers hook", () => {
   beforeEach(() => {
     vi.clearAllMocks();
 
@@ -51,7 +51,7 @@ describe("useUsers hook", () => {
   });
 
   it("should return users, loading, error and retry function", () => {
-    const { result } = renderHook(() => useUsers());
+    const { result } = renderHook(() => useFetchUsers());
 
     expect(result.current).toEqual({
       users: mockUsers,
@@ -71,7 +71,7 @@ describe("useUsers hook", () => {
       mockDispatch
     );
 
-    renderHook(() => useUsers());
+    renderHook(() => useFetchUsers());
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith(fetchUsersStart());
@@ -88,7 +88,7 @@ describe("useUsers hook", () => {
       mockDispatch
     );
 
-    renderHook(() => useUsers());
+    renderHook(() => useFetchUsers());
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith(fetchUsersSuccess(mockUsers));
@@ -105,7 +105,7 @@ describe("useUsers hook", () => {
       mockDispatch
     );
 
-    renderHook(() => useUsers());
+    renderHook(() => useFetchUsers());
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith(
@@ -123,7 +123,7 @@ describe("useUsers hook", () => {
       mockDispatch
     );
 
-    renderHook(() => useUsers());
+    renderHook(() => useFetchUsers());
 
     await waitFor(() => {
       expect(mockDispatch).toHaveBeenCalledWith(
@@ -142,7 +142,7 @@ describe("useUsers hook", () => {
       mockDispatch
     );
 
-    const { result } = renderHook(() => useUsers());
+    const { result } = renderHook(() => useFetchUsers());
 
     await waitFor(() => {
       expect(fetchUsers).toHaveBeenCalledTimes(1);

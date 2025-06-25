@@ -1,5 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { User, UsersState } from "../../../shared/types/userTypes";
+import type { User, UsersState } from "../../../shared/types/IUser";
 
 const initialState: UsersState = {
   users: [],

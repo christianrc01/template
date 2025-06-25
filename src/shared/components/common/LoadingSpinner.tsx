@@ -1,4 +1,4 @@
-export const LoadingSpinner = () => {
+function LoadingSpinner() {
   return (
     <div
       className="grid place-items-center h-64"
@@ -11,4 +11,6 @@ export const LoadingSpinner = () => {
       ></div>
     </div>
   );
-};
+}
+
+export default LoadingSpinner;

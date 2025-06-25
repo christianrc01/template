@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
-import { Button } from "../../../shared/components/common/Button";
+import Button from "../../../shared/components/common/Button";
 
-export const HomePage = () => {
+function HomePage() {
   const { user } = useAppSelector((state) => state.auth);
 
   return (
@@ -42,4 +42,6 @@ export const HomePage = () => {
       </div>
     </div>
   );
-};
+}
+
+export default HomePage;

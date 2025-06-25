@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { UserCard } from "../../components/UserCard";
+import UserCard from "../../components/UserCard";
 import { mockUser } from "../data/mockUsers";
 
 describe("UserCard Component", () => {

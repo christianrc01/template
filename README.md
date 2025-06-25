@@ -44,10 +44,10 @@ Each feature is self-contained and includes:
 
 | Subdirectory  | Contents                                                           |
 | ------------- | ------------------------------------------------------------------ |
-| `components/` | Reusable UI components specific to the feature (e.g., `UserCard`). |
-| `pages/`      | Top-level page components (e.g., `UserProfilePage`).               |
-| `hooks/`      | Custom hooks for feature logic (e.g., `useUserAuth`).              |
-| `services/`   | API calls (e.g., `userApi.ts` with Axios/fetch).                   |
+| `components/` | Reusable UI components specific to the feature (e.g., `UserCard.tsx`). |
+| `pages/`      | Top-level page components (e.g., `UserProfilePage.tsx`).               |
+| `hooks/`      | Custom hooks for feature logic (e.g., `useUserAuth.ts`).              |
+| `services/`   | API calls (e.g., `userService.ts` with Axios/fetch).                   |
 | `slices/`     | Redux Toolkit slices for state management (e.g., `userSlice.ts`).  |
 
 **Example Feature (users):**

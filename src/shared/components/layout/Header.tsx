@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
-import { Button } from "../common/Button";
+import Button from "../common/Button";
 
-export const Header = () => {
+function Header() {
   const { user } = useAppSelector((state) => state.auth);
 
   return (
@@ -31,4 +31,6 @@ export const Header = () => {
       </div>
     </header>
   );
-};
+}
+
+export default Header;

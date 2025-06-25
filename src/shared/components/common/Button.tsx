@@ -1,11 +1,11 @@
-import type { ButtonProps } from "../../types/sharedTypes";
+import type { ButtonProps } from "../../types/IShared";
 
-export const Button = ({
+function Button({
   variant = "primary",
   children,
   className = "",
   ...props
-}: ButtonProps) => {
+}: ButtonProps) {
   const baseClasses = "px-4 py-2 rounded transition-colors font-medium";
   const variantClasses = {
     primary: "!bg-blue-500 text-white hover:!bg-blue-600",
@@ -21,4 +21,6 @@ export const Button = ({
       {children}
     </button>
   );
-};
+}
+
+export default Button;

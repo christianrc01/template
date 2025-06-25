@@ -1,10 +1,10 @@
 import React from "react";
 import * as Sentry from "@sentry/react";
-import { ErrorFallback } from "./ErrorFallback";
+import ErrorFallback from "./ErrorFallback";
 import type {
   IErrorBoundaryProps,
   IErrorBoundaryState,
-} from "../../types/errorTypes";
+} from "../../types/IError";
 
 export class ErrorBoundary extends React.Component<
   IErrorBoundaryProps,

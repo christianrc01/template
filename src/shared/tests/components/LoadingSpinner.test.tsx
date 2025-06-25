@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import { LoadingSpinner } from "../../components/common/LoadingSpinner";
+import LoadingSpinner from "../../components/common/LoadingSpinner";
 
 describe("LoadingSpinner Component", () => {
   it("renders with proper accessibility attributes", () => {

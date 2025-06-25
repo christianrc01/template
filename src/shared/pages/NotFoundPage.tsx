@@ -1,4 +1,4 @@
-export const NotFoundPage = () => {
+function NotFoundPage() {
   return (
     <div className="grid place-items-center w-full">
       <h1 className="text-center font-bold text-gray-800">
@@ -6,4 +6,6 @@ export const NotFoundPage = () => {
       </h1>
     </div>
   );
-};
+}
+
+export default NotFoundPage;

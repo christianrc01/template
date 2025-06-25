@@ -1,9 +1,9 @@
 import IconLink from "../../../shared/icons/IconLink";
 import IconMail from "../../../shared/icons/IconMail";
 import IconPhone from "../../../shared/icons/IconPhone";
-import type { UserCardProps } from "../../../shared/types/userTypes";
+import type { UserCardProps } from "../../../shared/types/IUser";
 
-export const UserCard = ({ user }: UserCardProps) => {
+function UserCard({ user }: UserCardProps) {
   return (
     <div className="p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white max-w-md">
       <div className="flex items-start space-x-4">
@@ -57,4 +57,6 @@ export const UserCard = ({ user }: UserCardProps) => {
       </div>
     </div>
   );
-};
+}
+
+export default UserCard;

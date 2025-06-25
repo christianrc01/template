@@ -1,11 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Header } from "./Header";
-import { Footer } from "./Footer";
-import { LoadingSpinner } from "../common/LoadingSpinner";
-import type { LayoutProps } from "../../types/sharedTypes";
+import Header from "./Header";
+import Footer from "./Footer";
+import LoadingSpinner from "../common/LoadingSpinner";
+import type { LayoutProps } from "../../types/IShared";
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+function Layout({ children }: LayoutProps): React.ReactElement {
   return (
     <div className="min-h-screen w-screen flex flex-col bg-gray-50">
       <Header />
@@ -17,4 +17,6 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <Footer />
     </div>
   );
-};
+}
+
+export default Layout;

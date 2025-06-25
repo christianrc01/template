@@ -5,9 +5,9 @@ import {
   fetchUsersSuccess,
   fetchUsersFailure,
 } from "../slices/usersSlice";
-import { fetchUsers } from "../services/usersApi";
+import fetchUsers from "../services/usersService";
 
-export const useUsers = () => {
+function useFetchUsers() {
   const dispatch = useAppDispatch();
   const { users, loading, error } = useAppSelector((state) => state.users);
 
@@ -30,4 +30,6 @@ export const useUsers = () => {
   }, [loadUsers]);
 
   return { users, loading, error, retry: loadUsers };
-};
+}
+
+export default useFetchUsers;

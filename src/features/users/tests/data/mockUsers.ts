@@ -1,4 +1,4 @@
-import type { User } from "../../../../shared/types/userTypes";
+import type { User } from "../../../../shared/types/IUser";
 
 export const mockUser: User = {
   id: 1,
