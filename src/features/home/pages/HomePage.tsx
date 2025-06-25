@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../../../app/hooks";
 import Button from "../../../shared/components/common/Button";
+import { ROUTE_PATHS } from "../../../app/routes";
 
 function HomePage() {
   const { user } = useAppSelector((state) => state.auth);
@@ -18,13 +19,13 @@ function HomePage() {
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {user ? (
-            <Link to="/profile" className="w-full sm:w-auto">
+            <Link to={ROUTE_PATHS.PROFILE} className="w-full sm:w-auto">
               <Button variant="outline-white" className="w-full">
                 Your Profile
               </Button>
             </Link>
           ) : (
-            <Link to="/users" className="w-full sm:w-auto">
+            <Link to={ROUTE_PATHS.USERS} className="w-full sm:w-auto">
               <Button variant="outline-white" className="w-full">
                 Manage Users
               </Button>

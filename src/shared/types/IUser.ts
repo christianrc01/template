@@ -1,3 +1,5 @@
+import type { EntityState } from "@reduxjs/toolkit";
+
 interface Geo {
   lat: string;
   lng: string;
@@ -29,11 +31,10 @@ export interface User {
   // Add more properties as needed
 }
 
-export interface UsersState {
-  users: User[];
+export type UsersState = EntityState<User, number> & {
   loading: boolean;
   error: string | null;
-}
+};
 
 export interface UserCardProps {
   user: User;

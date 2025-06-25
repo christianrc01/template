@@ -4,12 +4,14 @@ import {
   fetchUsersStart,
   fetchUsersSuccess,
   fetchUsersFailure,
+  selectAllUsers,
 } from "../slices/usersSlice";
 import fetchUsers from "../services/usersService";
 
 function useFetchUsers() {
   const dispatch = useAppDispatch();
-  const { users, loading, error } = useAppSelector((state) => state.users);
+  const users = useAppSelector(selectAllUsers);
+  const { loading, error } = useAppSelector((state) => state.users);
 
   const loadUsers = useCallback(async () => {
     dispatch(fetchUsersStart());
