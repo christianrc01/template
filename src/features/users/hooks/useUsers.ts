@@ -18,7 +18,11 @@ export const useUsers = () => {
         const users = await fetchUsers();
         dispatch(fetchUsersSuccess(users));
       } catch (err) {
-        dispatch(fetchUsersFailure(err instanceof Error ? err.message : 'An unknown error occurred'));
+        dispatch(
+          fetchUsersFailure(
+            err instanceof Error ? err.message : "An unknown error occurred"
+          )
+        );
       }
     };
     loadUsers();

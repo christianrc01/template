@@ -6,11 +6,17 @@ import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { NotFoundPage } from "./shared/pages/NotFoundPage";
 
+const NotFoundWithLayout = () => (
+  <Layout>
+    <NotFoundPage />
+  </Layout>
+);
+
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: <NotFoundPage />,
+    errorElement: <NotFoundWithLayout />,
     children: [
       {
         index: true,
