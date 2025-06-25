@@ -20,13 +20,21 @@ function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {user ? (
             <Link to={ROUTE_PATHS.PROFILE} className="w-full sm:w-auto">
-              <Button variant="outline-white" className="w-full">
+              <Button
+                variant="outline-white"
+                className="w-full"
+                aria-label="View profile"
+              >
                 Your Profile
               </Button>
             </Link>
           ) : (
             <Link to={ROUTE_PATHS.USERS} className="w-full sm:w-auto">
-              <Button variant="outline-white" className="w-full">
+              <Button
+                variant="outline-white"
+                className="w-full"
+                aria-label="View users"
+              >
                 Manage Users
               </Button>
             </Link>

@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import * as Sentry from "@sentry/react";
 import "./shared/styles/index.css";
 import App from "./App.tsx";
+import React from "react";
+import ReactDOM from "react-dom";
 
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
@@ -15,6 +17,12 @@ Sentry.init({
   replaysSessionSampleRate: 0.1,
   replaysOnErrorSampleRate: 1.0,
 });
+
+if (import.meta.env.DEV) {
+  import("@axe-core/react").then((axe) => {
+    axe.default(React, ReactDOM, 1000);
+  });
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

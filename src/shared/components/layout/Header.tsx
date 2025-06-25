@@ -9,7 +9,7 @@ function Header() {
   return (
     <header className="text-white shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
-        <nav className="flex gap-4">
+        <nav aria-label="Main navigation" className="flex gap-4">
           <Link to={ROUTE_PATHS.HOME} className="hover:!underline">
             Home
           </Link>
@@ -18,7 +18,7 @@ function Header() {
           </Link>
         </nav>
 
-        <nav className="flex gap-4">
+        <nav aria-label="User navigation" className="flex gap-4">
           {user ? (
             <Link to={ROUTE_PATHS.PROFILE} className="hover:!underline">
               Profile

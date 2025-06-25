@@ -1,4 +1,5 @@
 import type { IErrorMessageProps } from "../../types/IError";
+import Button from "../common/Button";
 
 function ErrorMessage({ error, onRetry }: IErrorMessageProps) {
   return (
@@ -9,12 +10,13 @@ function ErrorMessage({ error, onRetry }: IErrorMessageProps) {
           {typeof error === "string" ? error : error.message}
         </p>
         {onRetry && (
-          <button
+          <Button
             onClick={onRetry}
-            className="mt-3 px-4 py-2 bg-red-100 text-red-800 rounded hover:bg-red-200"
+            variant="outline-white"
+            className="mt-3 !text-red-800 !border-red-300 hover:!bg-red-100"
           >
             Try Again
-          </button>
+          </Button>
         )}
       </div>
     </div>

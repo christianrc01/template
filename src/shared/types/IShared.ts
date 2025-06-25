@@ -4,5 +4,5 @@ export interface LayoutProps {
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "outline-white";
+  variant?: "primary" | "secondary" | "danger" | "outline-white";
 }

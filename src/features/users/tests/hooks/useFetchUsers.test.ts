@@ -1,4 +1,4 @@
-import { renderHook, waitFor } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import {
   beforeEach,
   describe,
@@ -8,43 +8,47 @@ import {
   type MockedFunction,
 } from "vitest";
 import useFetchUsers from "../../hooks/useFetchUsers";
-import fetchUsers from "../../services/usersService";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
-import {
-  fetchUsersFailure,
-  fetchUsersStart,
-  fetchUsersSuccess,
-} from "../../slices/usersSlice";
+import { fetchUsers, selectAllUsers } from "../../slices/usersSlice";
 import { mockUsers } from "../data/mockUsers";
 
-// Mock from useAppSelector
-vi.mock("../../services/usersService");
+// Mock the hooks
 vi.mock("../../../../app/hooks");
+vi.mock("../../slices/usersSlice", async (importOriginal) => {
+  const actual = await importOriginal();
+  return {
+    ...(actual as object),
+    selectAllUsers: vi.fn(),
+  };
+});
 
 describe("useFetchUsers hook", () => {
+  const mockDispatch = vi.fn();
+
   beforeEach(() => {
     vi.clearAllMocks();
 
-    // Mock de useAppSelector
+    // Mock useAppSelector for loading and error
     (
       useAppSelector as MockedFunction<typeof useAppSelector>
-    ).mockImplementation((selector) =>
-      selector({
-        users: {
-          users: mockUsers,
-          loading: false,
-          error: null,
-        },
-        auth: {
-          user: null,
-          loading: false,
-          error: null,
-        },
-      })
-    );
+    ).mockImplementation((selector) => {
+      // Handle the selector from the hook
+      if (selector === selectAllUsers) {
+        return mockUsers;
+      }
+      // Handle the state.users selector
+      return {
+        loading: false,
+        error: null,
+      };
+    });
 
-    // Mock de useAppDispatch
-    const mockDispatch = vi.fn();
+    // Mock selectAllUsers selector
+    (
+      selectAllUsers as MockedFunction<typeof selectAllUsers>
+    ).mockImplementation(() => mockUsers);
+
+    // Mock useAppDispatch
     (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
       mockDispatch
     );
@@ -61,98 +65,72 @@ describe("useFetchUsers hook", () => {
     });
   });
 
-  it("should call fetchUsers on mount", async () => {
-    (fetchUsers as MockedFunction<typeof fetchUsers>).mockResolvedValueOnce(
-      mockUsers
-    );
-
-    const mockDispatch = vi.fn();
-    (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
-      mockDispatch
-    );
-
+  it("should dispatch fetchUsers on mount", () => {
     renderHook(() => useFetchUsers());
 
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith(fetchUsersStart());
-      expect(fetchUsers).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  it("should dispatch success action when fetch succeeds", async () => {
-    (fetchUsers as MockedFunction<typeof fetchUsers>).mockResolvedValueOnce(
-      mockUsers
-    );
-    const mockDispatch = vi.fn();
-    (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
-      mockDispatch
-    );
-
-    renderHook(() => useFetchUsers());
-
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith(fetchUsersSuccess(mockUsers));
-    });
-  });
-
-  it("should dispatch failure action when fetch fails", async () => {
-    const errorMessage = "Network error";
-    (fetchUsers as MockedFunction<typeof fetchUsers>).mockRejectedValueOnce(
-      new Error(errorMessage)
-    );
-    const mockDispatch = vi.fn();
-    (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
-      mockDispatch
-    );
-
-    renderHook(() => useFetchUsers());
-
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith(
-        fetchUsersFailure(errorMessage)
-      );
-    });
-  });
-
-  it("should handle unknown errors", async () => {
-    (fetchUsers as MockedFunction<typeof fetchUsers>).mockRejectedValueOnce(
-      "Unknown error"
-    );
-    const mockDispatch = vi.fn();
-    (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
-      mockDispatch
-    );
-
-    renderHook(() => useFetchUsers());
-
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith(
-        fetchUsersFailure("An unknown error occurred")
-      );
-    });
+    expect(mockDispatch).toHaveBeenCalledWith(fetchUsers());
   });
 
   it("should retry fetching when retry is called", async () => {
-    (fetchUsers as MockedFunction<typeof fetchUsers>)
-      .mockResolvedValueOnce([])
-      .mockResolvedValueOnce(mockUsers);
-
-    const mockDispatch = vi.fn();
-    (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
-      mockDispatch
-    );
-
     const { result } = renderHook(() => useFetchUsers());
 
-    await waitFor(() => {
-      expect(fetchUsers).toHaveBeenCalledTimes(1);
+    // Clear initial call
+    mockDispatch.mockClear();
+    result.current.retry();
+
+    expect(mockDispatch).toHaveBeenCalledWith(fetchUsers());
+  });
+
+  it("should return loading state when true", () => {
+    (
+      useAppSelector as MockedFunction<typeof useAppSelector>
+    ).mockImplementation((selector) => {
+      if (selector === selectAllUsers) {
+        return mockUsers;
+      }
+      return {
+        loading: true,
+        error: null,
+      };
     });
 
-    await result.current.retry();
+    const { result } = renderHook(() => useFetchUsers());
+    expect(result.current.loading).toBe(true);
+  });
 
-    await waitFor(() => {
-      expect(fetchUsers).toHaveBeenCalledTimes(2);
-      expect(mockDispatch).toHaveBeenCalledWith(fetchUsersSuccess(mockUsers));
+  it("should return error state when present", () => {
+    const errorMessage = "Network error";
+    (
+      useAppSelector as MockedFunction<typeof useAppSelector>
+    ).mockImplementation((selector) => {
+      if (selector === selectAllUsers) {
+        return mockUsers;
+      }
+      return {
+        loading: false,
+        error: errorMessage,
+      };
     });
+
+    const { result } = renderHook(() => useFetchUsers());
+    expect(result.current.error).toBe(errorMessage);
+  });
+
+  it("should return empty users array when loading", () => {
+    (
+      useAppSelector as MockedFunction<typeof useAppSelector>
+    ).mockImplementation((selector) => {
+      if (selector === selectAllUsers) {
+        return [];
+      }
+      return {
+        loading: true,
+        error: null,
+      };
+    });
+
+    const { result } = renderHook(() => useFetchUsers());
+    expect(result.current.users).toEqual([]);
+    expect(result.current.loading).toBe(true);
   });
 });

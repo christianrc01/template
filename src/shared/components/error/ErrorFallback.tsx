@@ -1,6 +1,7 @@
 // import type { JSX } from "react";
 import IconInfo from "../../icons/IconInfo";
 import type { IErrorFallbackProps } from "../../types/IError";
+import Button from "../common/Button";
 
 function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (
@@ -24,12 +25,9 @@ function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
               {error?.toString()}
             </pre>
           </details>
-          <button
-            onClick={onReset}
-            className="mt-4 px-4 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-colors focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
-          >
+          <Button onClick={onReset} variant="danger" className="mt-4">
             Try again
-          </button>
+          </Button>
         </div>
       </div>
     </div>
