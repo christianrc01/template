@@ -4,6 +4,7 @@ export interface ApiCallPayload {
   url: string;
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   data?: Record<string, unknown>;
+  onStart?: string;
   onSuccess: string;
   onError: string;
 }

@@ -21,7 +21,7 @@ function apiMiddleware(): Middleware {
         }
 
         const apiAction = action as ApiCallAction;
-        const { url, method, data, onSuccess, onError } = apiAction.payload;
+        const { url, method, data, onStart, onSuccess, onError } = apiAction.payload;
         const token = await getAccessToken();
 
         if (!token) {
@@ -30,6 +30,10 @@ function apiMiddleware(): Middleware {
             payload: "No authentication token available",
           });
           return;
+        }
+
+        if (onStart) {
+          store.dispatch({ type: onStart });
         }
 
         try {

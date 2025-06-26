@@ -3,6 +3,7 @@ import Layout from "../shared/components/layout/Layout";
 import NotFoundPage from "../shared/pages/NotFoundPage";
 import HomePage from "../shared/pages/HomePage";
 import UsersPage from "../features/users/pages/UsersPage";
+import { ErrorBoundary } from "../shared/components/error/ErrorBoundary";
 
 export const ROUTE_PATHS = {
   HOME: "/",
@@ -29,8 +30,11 @@ export const ROUTE_TITLES: Record<RoutePaths, string> = {
 export const routes: RouteObject[] = [
   {
     path: ROUTE_PATHS.HOME,
-    element: <Layout />,
-    errorElement: <NotFoundPage />,
+    element: (
+      <ErrorBoundary>
+        <Layout />
+      </ErrorBoundary>
+    ),
     children: [
       {
         index: true,
@@ -39,6 +43,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTE_PATHS.USERS.substring(1),
         element: <UsersPage />,
+      },
+      {
+        path: "*",
+        element: <NotFoundPage />,
       },
     ],
   },

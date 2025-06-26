@@ -48,6 +48,7 @@ export const fetchUsers = () =>
   apiCall({
     url: "/getUsers",
     method: "GET",
+    onStart: fetchUsersStart.type,
     onSuccess: fetchUsersSuccess.type,
     onError: fetchUsersFailure.type,
   });

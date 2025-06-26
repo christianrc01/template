@@ -4,7 +4,7 @@ import UserCard from "../components/UserCard";
 import useUsers from "../hooks/useUsers";
 
 function UsersPage() {
-  const { users, loading, error } = useUsers();
+  const { users, loading, error, retry} = useUsers();
 
   if (loading)
     return (
@@ -12,7 +12,7 @@ function UsersPage() {
         <LoadingSpinner />
       </div>
     );
-  if (error) return <ErrorMessage error={error} />;
+  if (error) return <ErrorMessage error={error} onRetry={retry} />;
 
   return (
     <div className="w-full text-center">
