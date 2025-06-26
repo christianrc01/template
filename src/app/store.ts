@@ -5,7 +5,7 @@ import apiMiddleware from "./middleware/apiMiddleware";
 export const store = configureStore({
   reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(apiMiddleware),
+    getDefaultMiddleware().concat(apiMiddleware()),
 });
 
 export type AppDispatch = typeof store.dispatch;

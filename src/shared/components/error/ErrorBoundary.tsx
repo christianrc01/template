@@ -29,7 +29,7 @@ export class ErrorBoundary extends React.Component<
       Sentry.captureException(error);
     });
 
-    console.error("ErrorBoundary caught:", error, errorInfo);
+    console.error("❌ ErrorBoundary caught:", error, errorInfo);
   }
 
   handleReset = () => {

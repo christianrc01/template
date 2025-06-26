@@ -1,47 +1,74 @@
 import type { Middleware } from "@reduxjs/toolkit";
 import type { ApiCallAction, AppAction } from "../../shared/types/IMiddleware";
+import axios from "axios";
+import getAccessToken from "../../shared/services/authService";
 
-const apiMiddleware: Middleware =
-  (store) => (next) => async (action: unknown) => {
-    if (typeof action !== "object" || action === null || !("type" in action)) {
-      return next(action);
-    }
+function apiMiddleware(): Middleware {
+  return function (store) {
+    return function (next) {
+      return async function (action: unknown) {
+        if (
+          typeof action !== "object" ||
+          action === null ||
+          !("type" in action)
+        ) {
+          return next(action);
+        }
 
-    const appAction = action as AppAction;
-    if (appAction.type !== "API_CALL") {
-      return next(appAction);
-    }
+        const appAction = action as AppAction;
+        if (appAction.type !== "API_CALL") {
+          return next(appAction);
+        }
 
-    const apiAction = action as ApiCallAction;
-    const { url, method, data, onSuccess, onError } = apiAction.payload;
+        const apiAction = action as ApiCallAction;
+        const { url, method, data, onSuccess, onError } = apiAction.payload;
+        const token = await getAccessToken();
 
-    try {
-      const response = await fetch(url, {
-        method,
-        body: data ? JSON.stringify(data) : undefined,
-      });
-      const responseData = await response.json();
+        if (!token) {
+          store.dispatch({
+            type: onError,
+            payload: "No authentication token available",
+          });
+          return;
+        }
 
-      store.dispatch({
-        type: onSuccess,
-        payload: responseData,
-      });
-    } catch (error) {
-      let errorMessage = "Unknown error";
+        try {
+          const response = await axios({
+            url,
+            method,
+            data,
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+            // You can add additional axios config here if needed
+          });
 
-      if (typeof error === "string") {
-        errorMessage = error;
-      } else if (error instanceof Error) {
-        errorMessage = error.message;
-      } else if (error && typeof error === "object" && "message" in error) {
-        errorMessage = String(error.message);
-      }
+          store.dispatch({
+            type: onSuccess,
+            payload: response.data,
+          });
+        } catch (error) {
+          let errorMessage = "Unknown error";
 
-      store.dispatch({
-        type: onError,
-        payload: errorMessage,
-      });
-    }
+          if (axios.isAxiosError(error)) {
+            // Handle Axios-specific error
+            errorMessage = error.response?.data?.message || error.message;
+          } else if (typeof error === "string") {
+            errorMessage = error;
+          } else if (error instanceof Error) {
+            errorMessage = error.message;
+          } else if (error && typeof error === "object" && "message" in error) {
+            errorMessage = String(error.message);
+          }
+
+          store.dispatch({
+            type: onError,
+            payload: errorMessage,
+          });
+        }
+      };
+    };
   };
+}
 
 export default apiMiddleware;

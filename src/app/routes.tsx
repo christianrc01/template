@@ -1,14 +1,13 @@
 import type { RouteObject } from "react-router-dom";
 import Layout from "../shared/components/layout/Layout";
 import NotFoundPage from "../shared/pages/NotFoundPage";
-import HomePage from "../features/home/pages/HomePage";
+import HomePage from "../shared/pages/HomePage";
 import UsersPage from "../features/users/pages/UsersPage";
 
 export const ROUTE_PATHS = {
   HOME: "/",
   USERS: "/users",
   PROFILE: "/profile",
-  LOGIN: "/login",
   TERMS: "/terms",
   CONTACT: "/contact",
   PRIVACY: "/privacy",
@@ -21,7 +20,6 @@ export const ROUTE_TITLES: Record<RoutePaths, string> = {
   HOME: "Home | Template app",
   USERS: "Users | Template app",
   PROFILE: "Profile | Template app",
-  LOGIN: "Login | Template app",
   TERMS: "Terms and conditions | Template app",
   CONTACT: "Contact | Template app",
   PRIVACY: "Privacy Policy | Template app",

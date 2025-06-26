@@ -1,10 +1,10 @@
 import LoadingSpinner from "../../../shared/components/common/LoadingSpinner";
-import  ErrorMessage  from "../../../shared/components/error/ErrorMessage";
+import ErrorMessage from "../../../shared/components/error/ErrorMessage";
 import UserCard from "../components/UserCard";
-import useFetchUsers from "../hooks/useFetchUsers";
+import useUsers from "../hooks/useUsers";
 
 function UsersPage() {
-  const { users, loading, error } = useFetchUsers();
+  const { users, loading, error } = useUsers();
 
   if (loading)
     return (

@@ -7,7 +7,7 @@ import {
   vi,
   type MockedFunction,
 } from "vitest";
-import useFetchUsers from "../../hooks/useFetchUsers";
+import useUsers from "../../hooks/useUsers";
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
 import { fetchUsers, selectAllUsers } from "../../slices/usersSlice";
 import { mockUsers } from "../data/mockUsers";
@@ -22,7 +22,7 @@ vi.mock("../../slices/usersSlice", async (importOriginal) => {
   };
 });
 
-describe("useFetchUsers hook", () => {
+describe("useUsers hook", () => {
   const mockDispatch = vi.fn();
 
   beforeEach(() => {
@@ -55,7 +55,7 @@ describe("useFetchUsers hook", () => {
   });
 
   it("should return users, loading, error and retry function", () => {
-    const { result } = renderHook(() => useFetchUsers());
+    const { result } = renderHook(() => useUsers());
 
     expect(result.current).toEqual({
       users: mockUsers,
@@ -66,13 +66,13 @@ describe("useFetchUsers hook", () => {
   });
 
   it("should dispatch fetchUsers on mount", () => {
-    renderHook(() => useFetchUsers());
+    renderHook(() => useUsers());
 
     expect(mockDispatch).toHaveBeenCalledWith(fetchUsers());
   });
 
   it("should retry fetching when retry is called", async () => {
-    const { result } = renderHook(() => useFetchUsers());
+    const { result } = renderHook(() => useUsers());
 
     // Clear initial call
     mockDispatch.mockClear();
@@ -94,7 +94,7 @@ describe("useFetchUsers hook", () => {
       };
     });
 
-    const { result } = renderHook(() => useFetchUsers());
+    const { result } = renderHook(() => useUsers());
     expect(result.current.loading).toBe(true);
   });
 
@@ -112,7 +112,7 @@ describe("useFetchUsers hook", () => {
       };
     });
 
-    const { result } = renderHook(() => useFetchUsers());
+    const { result } = renderHook(() => useUsers());
     expect(result.current.error).toBe(errorMessage);
   });
 
@@ -129,7 +129,7 @@ describe("useFetchUsers hook", () => {
       };
     });
 
-    const { result } = renderHook(() => useFetchUsers());
+    const { result } = renderHook(() => useUsers());
     expect(result.current.users).toEqual([]);
     expect(result.current.loading).toBe(true);
   });
