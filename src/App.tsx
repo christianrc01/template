@@ -7,6 +7,7 @@ import AuthInitializer from "./shared/components/common/AuthInitializer";
 import msalInstance from "./shared/services/msalInstance";
 import ErrorFallback from "./shared/components/error/ErrorFallback";
 import { ErrorBoundary } from "@sentry/react";
+import AccessiBe from "./shared/components/common/AccessiBe";
 
 function App() {
   const router = createBrowserRouter(routes);
@@ -20,6 +21,7 @@ function App() {
           )}
         >
           <AuthInitializer />
+          <AccessiBe />
           <RouterProvider router={router} />
         </ErrorBoundary>
       </Provider>
