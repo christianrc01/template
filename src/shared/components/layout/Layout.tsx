@@ -1,12 +1,11 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import Header from "./Header";
-import Footer from "./Footer";
 import LoadingSpinner from "../common/LoadingSpinner";
-import type { LayoutProps } from "../../types/IShared";
+import type { IWrapperProps } from "../../interfaces/IError";
 import DocumentTitle from "./DocumentTitle";
 
-function Layout({ children }: LayoutProps): React.ReactElement {
+function Layout({ children }: IWrapperProps): React.ReactElement {
   return (
     <div className="min-h-screen w-screen flex flex-col bg-gray-50">
       <Header />
@@ -16,7 +15,6 @@ function Layout({ children }: LayoutProps): React.ReactElement {
           {children || <Outlet />}
         </React.Suspense>
       </main>
-      <Footer />
     </div>
   );
 }

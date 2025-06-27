@@ -3,8 +3,11 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type { User, UsersState } from "../../../shared/types/IUser";
-import type { ApiCallPayload } from "../../../shared/types/IMiddleware";
+import type {
+  User,
+  UsersState,
+} from "../../../shared/interfaces/IUser";
+import type { ApiCallPayload } from "../../../shared/interfaces/IMiddleware";
 
 const usersAdapter = createEntityAdapter<User, number>({
   selectId: (user) => user.id,
@@ -29,7 +32,7 @@ const usersSlice = createSlice({
       state.error = null;
     },
     fetchUsersFailure(state, action: PayloadAction<string>) {
-      state.error = action.payload;
+      state.error = new Error(action.payload);
       state.loading = false;
     },
     // We can add more reducers here
@@ -46,7 +49,7 @@ export const apiCall = (payload: ApiCallPayload) => ({
 
 export const fetchUsers = () =>
   apiCall({
-    url: "/getUsers",
+    url: "/api/users",
     method: "GET",
     onStart: fetchUsersStart.type,
     onSuccess: fetchUsersSuccess.type,

@@ -1,6 +1,12 @@
 {
   "compilerOptions": {
-    "strict": true
+    "strict": true,
+    "allowJs": true,
+    "module": "ESNext",
+    "typeRoots": ["node_modules/@types", "./src/types"],
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
   },
   "files": [],
   "references": [

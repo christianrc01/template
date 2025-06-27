@@ -36,8 +36,8 @@ describe("Button Component", () => {
 
     it("applies outline-white variant", () => {
       render(<Button variant="outline-white" />);
-      expect(screen.getByRole("button")).toHaveClass(
-        "border border-white hover:bg-white hover:!text-blue-600"
+      expect(screen.getByRole("button").className).toMatch(
+        /border border-white.*hover:!bg-white.*hover:!text-blue-600/
       );
     });
   });

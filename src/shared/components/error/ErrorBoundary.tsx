@@ -2,15 +2,15 @@ import React from "react";
 import * as Sentry from "@sentry/react";
 import ErrorFallback from "./ErrorFallback";
 import type {
-  IErrorBoundaryProps,
+  IWrapperProps,
   IErrorBoundaryState,
-} from "../../types/IError";
+} from "../../interfaces/IError";
 
 export class ErrorBoundary extends React.Component<
-  IErrorBoundaryProps,
+  IWrapperProps,
   IErrorBoundaryState
 > {
-  constructor(props: IErrorBoundaryProps) {
+  constructor(props: IWrapperProps) {
     super(props);
     this.state = { hasError: false };
   }
@@ -39,7 +39,10 @@ export class ErrorBoundary extends React.Component<
   render() {
     if (this.state.hasError) {
       return (
-        <ErrorFallback error={this.state.error} onReset={this.handleReset} />
+        <ErrorFallback
+          error={this.state.error as Error}
+          onReset={this.handleReset}
+        />
       );
     }
 

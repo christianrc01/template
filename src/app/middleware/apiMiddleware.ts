@@ -1,5 +1,8 @@
 import type { Middleware } from "@reduxjs/toolkit";
-import type { ApiCallAction, AppAction } from "../../shared/types/IMiddleware";
+import type {
+  ApiCallAction,
+  AppAction,
+} from "../../shared/interfaces/IMiddleware";
 import axios from "axios";
 import getAccessToken from "../../shared/services/authService";
 
@@ -21,7 +24,8 @@ function apiMiddleware(): Middleware {
         }
 
         const apiAction = action as ApiCallAction;
-        const { url, method, data, onStart, onSuccess, onError } = apiAction.payload;
+        const { url, method, data, onStart, onSuccess, onError } =
+          apiAction.payload;
         const token = await getAccessToken();
 
         if (!token) {

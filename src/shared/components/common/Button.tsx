@@ -1,4 +1,4 @@
-import type { ButtonProps } from "../../types/IShared";
+import type { ButtonProps } from "../../interfaces/IShared";
 
 function Button({
   variant = "primary",
@@ -12,7 +12,8 @@ function Button({
     secondary: "!bg-gray-500 text-white hover:!bg-gray-600",
     danger:
       "!bg-red-600 text-white hover:!bg-red-700 focus:ring-red-500 dark:focus:ring-offset-gray-800",
-    "outline-white": "border border-white hover:bg-white hover:!text-blue-600",
+    "outline-white":
+      "!bg-gray-100 border border-white hover:!bg-white hover:!text-blue-600",
   };
 
   return (

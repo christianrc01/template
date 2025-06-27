@@ -1,7 +1,7 @@
-import type { IErrorMessageProps } from "../../types/IError";
+import type { IErrorFallbackProps } from "../../interfaces/IError";
 import Button from "../common/Button";
 
-function ErrorMessage({ error, onRetry }: IErrorMessageProps) {
+function ErrorMessage({ error, onReset }: IErrorFallbackProps) {
   return (
     <div className="w-full">
       <div className="p-4 bg-red-50 border border-red-200 rounded-lg ">
@@ -9,9 +9,9 @@ function ErrorMessage({ error, onRetry }: IErrorMessageProps) {
         <p className="text-red-600 mt-1">
           {typeof error === "string" ? error : error.message}
         </p>
-        {onRetry && (
+        {onReset && (
           <Button
-            onClick={onRetry}
+            onClick={onReset}
             variant="outline-white"
             className="mt-3 !text-red-800 !border-red-300 hover:!bg-red-100"
           >

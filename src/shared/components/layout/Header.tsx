@@ -3,16 +3,20 @@ import Button from "../common/Button";
 import { ROUTE_PATHS } from "../../../app/routes";
 
 function Header() {
+  const mainLinks = [
+    { to: ROUTE_PATHS.HOME, label: "Home" },
+    { to: ROUTE_PATHS.USERS, label: "Users" },
+  ];
+
   return (
     <header className="text-white shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
         <nav aria-label="Main navigation" className="flex gap-4">
-          <Link to={ROUTE_PATHS.HOME} className="hover:!underline">
-            Home
-          </Link>
-          <Link to={ROUTE_PATHS.USERS} className="hover:!underline">
-            Users
-          </Link>
+          {mainLinks.map((link) => (
+            <Link key={link.to} to={link.to} className="hover:!underline">
+              {link.label}
+            </Link>
+          ))}
         </nav>
 
         <nav aria-label="User navigation" className="flex gap-4">

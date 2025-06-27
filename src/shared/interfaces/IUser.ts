@@ -33,9 +33,9 @@ export interface User {
 
 export type UsersState = EntityState<User, number> & {
   loading: boolean;
-  error: string | null;
+  error: Error | null;
 };
 
-export interface UserCardProps {
+export interface UserProps {
   user: User;
 }

@@ -1,9 +1,17 @@
-import IconLink from "../../../shared/icons/IconLink";
 import IconMail from "../../../shared/icons/IconMail";
 import IconPhone from "../../../shared/icons/IconPhone";
-import type { UserCardProps } from "../../../shared/types/IUser";
+import type { UserProps } from "../../../shared/interfaces/IUser";
 
-function UserCard({ user }: UserCardProps) {
+function ContactItem({ icon, text }: { icon: React.ReactNode; text: React.ReactNode }) {
+  return (
+    <p className="text-gray-600 flex items-center gap-2">
+      {icon}
+      {text}
+    </p>
+  );
+}
+
+function UserCard({ user }: UserProps) {
   return (
     <div className="p-6 border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow bg-white max-w-md">
       <div className="flex items-start space-x-4">
@@ -12,27 +20,21 @@ function UserCard({ user }: UserCardProps) {
           <p className="text-gray-500">@{user.username}</p>
 
           <div className="mt-4 space-y-2">
-            <p className="text-gray-600 flex items-center gap-2">
-              <IconMail />
-              {user.email}
-            </p>
-
-            <p className="text-gray-600 flex items-center gap-2">
-              <IconPhone />
-              {user.phone}
-            </p>
-
-            <p className="text-gray-600 flex items-center gap-2">
-              <IconLink />
-              <a
-                href={`https://${user.website}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-blue-500 hover:underline"
-              >
-                {user.website}
-              </a>
-            </p>
+            <ContactItem icon={<IconMail />} text={user.email} />
+            <ContactItem icon={<IconPhone />} text={user.phone} />
+            <ContactItem
+              icon={<IconPhone />}
+              text={
+                <a
+                  href={`https://${user.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-blue-500 hover:underline"
+                >
+                  {user.website}
+                </a>
+              }
+            />
           </div>
 
           <div className="mt-4 p-3 bg-gray-50 rounded-lg">
@@ -51,7 +53,9 @@ function UserCard({ user }: UserCardProps) {
             <h4 className="font-medium text-gray-700">Company</h4>
             <p className="text-gray-800 font-medium">{user.company.name}</p>
             <p className="text-gray-600 italic">"{user.company.catchPhrase}"</p>
-            <p className="text-sm text-gray-500 mt-1">{user.company.bs}</p>
+            <p className="text-sm text-gray-500 mt-1">
+              {user.company.bs}
+            </p>
           </div>
         </div>
       </div>
