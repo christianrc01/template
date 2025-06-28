@@ -7,6 +7,7 @@ import {
 import { process, type State } from "@progress/kendo-data-query";
 import { useState } from "react";
 import type { UserProps } from "../../../shared/interfaces/IUser";
+import "../../../shared/styles/kendo-overrides.css"
 
 function UserTable({ users }: { users: UserProps["user"][] }) {
   const [dataState, setDataState] = useState<State>({
@@ -33,8 +34,9 @@ function UserTable({ users }: { users: UserProps["user"][] }) {
   const processedData = process(processedUsers, dataState);
   const commonColumnProps = {
     headerClassName:
-      "font-bold text-gray-700 bg-gray-100 px-4 py-3 border-b border-gray-200",
-    className: "px-4 py-3 text-gray-800 border-b border-gray-100",
+      "font-bold !text-gray-700 dark:!text-gray-300 !bg-gray-100 dark:!bg-gray-700 px-4 py-3 !border-b !border-gray-200 dark:!border-gray-600",
+    className:
+      "px-4 py-3 !text-gray-800 dark:!text-gray-200 !border-b !border-gray-100 dark:!border-gray-600 !bg-white/80 dark:!bg-gray-800/90",
   };
 
   const columns = [
@@ -42,7 +44,6 @@ function UserTable({ users }: { users: UserProps["user"][] }) {
       field: "name",
       title: "Name",
       ...commonColumnProps,
-      className: "text-gray-800",
     },
     {
       field: "username",
@@ -63,7 +64,6 @@ function UserTable({ users }: { users: UserProps["user"][] }) {
       field: "website",
       title: "Website",
       ...commonColumnProps,
-      className: "text-gray-600 hover:text-blue-500",
     },
     {
       field: "address.city",
@@ -85,12 +85,14 @@ function UserTable({ users }: { users: UserProps["user"][] }) {
         sortable={true}
         {...dataState}
         onDataStateChange={handleDataStateChange}
-        className="rounded-lg shadow-sm border border-gray-200 bg-white"
+        className="rounded-2xl shadow-sm !border !border-gray-200 dark:!border-gray-600 !bg-white dark:!bg-gray-800"
       >
-        <GridToolbar>
-          <div className="flex justify-between items-center w-full p-4 bg-gradient-to-r from-blue-50 to-gray-50 border-b border-gray-200 rounded-t-lg">
-            <h2 className="text-xl font-bold text-gray-800">Users List</h2>
-            <div className="text-sm text-gray-600 bg-white px-3 py-1 rounded-full shadow-sm">
+        <GridToolbar className="rounded-t-2xl !bg-white dark:!bg-gray-800">
+          <div className="flex justify-between items-center w-full p-4 !bg-gradient-to-r !from-blue-50 !to-gray-50 dark:!from-gray-700 dark:!to-gray-800 !border-b !border-gray-200 dark:!border-gray-600 rounded-t-lg">
+            <h2 className="text-xl font-bold !text-gray-800 dark:!text-gray-200">
+              Users List
+            </h2>
+            <div className="text-sm !text-gray-600 dark:!text-gray-300 !bg-white dark:!bg-gray-700 px-3 py-1 rounded-full shadow-sm">
               Total: <span className="font-semibold">{users.length}</span> users
             </div>
           </div>

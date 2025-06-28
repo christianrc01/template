@@ -9,11 +9,15 @@ function Header() {
   ];
 
   return (
-    <header className="text-white shadow-md">
+    <header className="bg-gray-800 text-white dark:bg-gray-900 dark:border-b dark:border-gray-700 shadow-md">
       <div className="container mx-auto flex justify-between items-center p-4">
         <nav aria-label="Main navigation" className="flex gap-4">
           {mainLinks.map((link) => (
-            <Link key={link.to} to={link.to} className="hover:!underline">
+            <Link
+              key={link.to}
+              to={link.to}
+              className="hover:underline hover:text-gray-300 dark:hover:text-gray-400"
+            >
               {link.label}
             </Link>
           ))}

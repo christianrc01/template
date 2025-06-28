@@ -4,13 +4,13 @@ import { ROUTE_PATHS } from "../../app/routes";
 
 function HomePage() {
   return (
-    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center justify-center p-6 w-full rounded-2xl">
-      <div className="max-w-2xl w-full bg-white rounded-xl shadow-lg p-8 md:p-12 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+    <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 flex flex-col items-center justify-center p-6 w-full rounded-3xl">
+      <div className="max-w-2xl w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 md:p-12 text-center">
+        <h1 className="text-4xl md:text-5xl font-bold text-gray-800 dark:text-gray-100 mb-4">
           Welcome
         </h1>
 
-        <p className="text-lg md:text-xl text-gray-600 mb-8">
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
           Browse and manage all registered users
         </p>
 
@@ -26,8 +26,8 @@ function HomePage() {
           </Link>
         </div>
 
-        <div className="mt-8 pt-6 border-t border-gray-100">
-          <p className="text-gray-500">
+        <div className="mt-8 pt-6 border-t border-gray-100 dark:border-gray-700">
+          <p className="text-gray-500 dark:text-gray-400">
             Last login: {new Date().toLocaleDateString()}
           </p>
         </div>

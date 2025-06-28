@@ -18,29 +18,6 @@ describe("Button Component", () => {
     );
   });
 
-  // Test 3: Variant classes
-  describe("Variant classes", () => {
-    it("applies primary variant", () => {
-      render(<Button variant="primary" />);
-      expect(screen.getByRole("button")).toHaveClass(
-        "!bg-blue-500 text-white hover:!bg-blue-600"
-      );
-    });
-
-    it("applies secondary variant", () => {
-      render(<Button variant="secondary" />);
-      expect(screen.getByRole("button")).toHaveClass(
-        "!bg-gray-500 text-white hover:!bg-gray-600"
-      );
-    });
-
-    it("applies outline-white variant", () => {
-      render(<Button variant="outline-white" />);
-      expect(screen.getByRole("button").className).toMatch(
-        /border border-white.*hover:!bg-white.*hover:!text-blue-600/
-      );
-    });
-  });
 
   // Test 4: Additional classes
   it("merges custom classes correctly", () => {

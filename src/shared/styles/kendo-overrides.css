@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+.k-grid-pager {
+  @apply !bg-white dark:!bg-gray-700 rounded-b-2xl;
+}
+
+.k-pager-numbers-wrap {
+  @apply !text-blue-800 dark:!text-blue-100;
+}
+
+.k-pager-nav .k-link {
+  @apply !text-gray-700 dark:!text-gray-300 hover:!bg-gray-100 dark:hover:!bg-gray-700;
+}
+
+.k-pager-sizes .k-dropdown .k-dropdown-wrap {
+  @apply !bg-white dark:!bg-gray-700 !border !border-gray-200 dark:!border-gray-600;
+}
+
+.k-pager-info {
+  @apply !text-gray-600 dark:!text-gray-400;
+}

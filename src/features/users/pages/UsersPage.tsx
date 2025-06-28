@@ -21,7 +21,9 @@ function UsersPage() {
   return (
     <div className="w-full text-center">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800">Users</h1>
+        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">
+          Users
+        </h1>
         <div className="flex space-x-2">
           {(["table", "cards"] as const).map((mode) => (
             <Button
