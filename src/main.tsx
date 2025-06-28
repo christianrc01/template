@@ -4,25 +4,8 @@ import App from "./App";
 import "./shared/styles/index.css";
 import "@progress/kendo-theme-default/dist/all.css";
 import msalInstance from "./shared/services/msalInstance";
-import * as Sentry from "@sentry/react";
 
 async function initializeApp() {
-  // Sentry initialization (synchronous)
-  if (import.meta.env.VITE_SENTRY_DSN) {
-    Sentry.init({
-      dsn: import.meta.env.VITE_SENTRY_DSN,
-      environment: import.meta.env.VITE_NODE_ENV,
-      integrations: [
-        Sentry.browserTracingIntegration(),
-        Sentry.replayIntegration(),
-      ],
-      tracesSampleRate:
-        import.meta.env.VITE_NODE_ENV === "production" ? 0.1 : 1.0,
-      replaysSessionSampleRate: 0.1,
-      replaysOnErrorSampleRate: 1.0,
-    });
-  }
-
   // Asynchronous initialization of axe-core (only in development)
   const axePromise = import.meta.env.DEV
     ? import("@axe-core/react").then((axe) => {

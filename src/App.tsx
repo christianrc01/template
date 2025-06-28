@@ -5,9 +5,8 @@ import { routes } from "./app/routes";
 import { MsalProvider } from "@azure/msal-react";
 import AuthInitializer from "./shared/components/common/AuthInitializer";
 import msalInstance from "./shared/services/msalInstance";
-import ErrorFallback from "./shared/components/error/ErrorFallback";
-import { ErrorBoundary } from "@sentry/react";
 import AccessiBe from "./shared/components/common/AccessiBe";
+import { ErrorBoundary } from "./shared/components/error/ErrorBoundary";
 
 function App() {
   const router = createBrowserRouter(routes);
@@ -15,11 +14,7 @@ function App() {
   return (
     <MsalProvider instance={msalInstance}>
       <Provider store={store}>
-        <ErrorBoundary
-          fallback={({ error, resetError }) => (
-            <ErrorFallback error={error as Error} onReset={resetError} />
-          )}
-        >
+        <ErrorBoundary>
           <AuthInitializer />
           <AccessiBe />
           <RouterProvider router={router} />

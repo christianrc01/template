@@ -4,6 +4,7 @@ import Header from "./Header";
 import LoadingSpinner from "../common/LoadingSpinner";
 import type { IWrapperProps } from "../../interfaces/IError";
 import DocumentTitle from "./DocumentTitle";
+import TrackPageView from "./TrackPageView";
 
 function Layout({ children }: IWrapperProps): React.ReactElement {
   return (
@@ -11,6 +12,7 @@ function Layout({ children }: IWrapperProps): React.ReactElement {
       <Header />
       <main className="flex-grow container mx-auto p-4 md:p-6 flex">
         <React.Suspense fallback={<LoadingSpinner />}>
+          <TrackPageView />
           <DocumentTitle />
           {children || <Outlet />}
         </React.Suspense>

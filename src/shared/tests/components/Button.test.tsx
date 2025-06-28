@@ -14,10 +14,9 @@ describe("Button Component", () => {
     render(<Button />);
     const button = screen.getByRole("button");
     expect(button).toHaveClass(
-      "px-4 py-2 rounded transition-colors font-medium"
+      "px-4 py-2 rounded-full transition-colors font-medium"
     );
   });
-
 
   // Test 4: Additional classes
   it("merges custom classes correctly", () => {

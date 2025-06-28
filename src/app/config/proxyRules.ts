@@ -15,20 +15,7 @@ const userProxyRules = Object.entries(USERS_ENDPOINTS).reduce(
 );
 
 // Other proxies (explicit typing)
-const OTHER_PROXIES: Record<string, ProxyOptions> = {
-  "/postSentryLogs": {
-    target: "https://sentry.io",
-    changeOrigin: true,
-    rewrite: (path: string) => path.replace(/^\/postSentryLogs/, ""),
-    configure: (proxy) => {
-      proxy.on("proxyReq", (proxyReq) => {
-        proxyReq.setHeader("Content-Type", "application/x-sentry-envelope");
-      });
-    },
-  },
-};
 
 export default {
   ...userProxyRules,
-  ...OTHER_PROXIES,
 } satisfies Record<string, ProxyOptions>;

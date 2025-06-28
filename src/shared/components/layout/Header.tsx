@@ -16,7 +16,6 @@ function Header() {
             <Link
               key={link.to}
               to={link.to}
-              className="hover:underline hover:text-gray-300 dark:hover:text-gray-400"
             >
               {link.label}
             </Link>
