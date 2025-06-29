@@ -1,12 +1,12 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import { routes } from "./app/routes";
+import { store } from "@/app/store";
+import { routes } from "@/app/routes";
 import { MsalProvider } from "@azure/msal-react";
-import AuthInitializer from "./shared/components/common/AuthInitializer";
-import msalInstance from "./shared/services/msalInstance";
-import AccessiBe from "./shared/components/common/AccessiBe";
-import { ErrorBoundary } from "./shared/components/error/ErrorBoundary";
+import AuthInitializer from "@/shared/components/common/AuthInitializer";
+import msalInstance from "@/shared/services/msalInstance";
+import AccessiBe from "@/shared/components/common/AccessiBe";
+import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
 
 function App() {
   const router = createBrowserRouter(routes);

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Button from "../common/Button";
-import { ROUTE_PATHS } from "../../../app/routes";
+import Button from "@/shared/components/common/Button";
+import { ROUTE_PATHS } from "@/app/routes";
 
 function Header() {
   const mainLinks = [
@@ -13,10 +13,7 @@ function Header() {
       <div className="container mx-auto flex justify-between items-center p-4">
         <nav aria-label="Main navigation" className="flex gap-4">
           {mainLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-            >
+            <Link key={link.to} to={link.to}>
               {link.label}
             </Link>
           ))}

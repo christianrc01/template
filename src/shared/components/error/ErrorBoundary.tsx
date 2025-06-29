@@ -1,10 +1,10 @@
 import React from "react";
-import ErrorFallback from "./ErrorFallback";
+import ErrorFallback from "@/shared/components/error/ErrorFallback";
 import type {
   IWrapperProps,
   IErrorBoundaryState,
-} from "../../interfaces/IError";
-import { appInsights } from "../../../app/appInsights";
+} from "@/shared/interfaces/IError";
+import { appInsights } from "@/app/appInsights";
 
 export class ErrorBoundary extends React.Component<
   IWrapperProps,

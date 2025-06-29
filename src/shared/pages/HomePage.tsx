@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Button from "../components/common/Button";
-import { ROUTE_PATHS } from "../../app/routes";
+import Button from "@/shared/components/common/Button";
+import { ROUTE_PATHS } from "@/app/routes";
 
 function HomePage() {
   return (

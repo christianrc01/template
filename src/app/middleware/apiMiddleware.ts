@@ -1,10 +1,7 @@
 import type { Middleware } from "@reduxjs/toolkit";
-import type {
-  ApiCallAction,
-  AppAction,
-} from "../../shared/interfaces/IMiddleware";
+import type { ApiCallAction, AppAction } from "@/shared/interfaces/IMiddleware";
 import axios from "axios";
-import getAccessToken from "../../shared/services/authService";
+import getAccessToken from "@/shared/services/authService";
 
 function apiMiddleware(): Middleware {
   return function (store) {

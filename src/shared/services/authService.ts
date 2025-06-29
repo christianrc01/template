@@ -1,5 +1,5 @@
-import { loginRequest } from "../utils/authConfig";
-import msalInstance from "./msalInstance";
+import { loginRequest } from "@/shared/utils/authConfig";
+import msalInstance from "@/shared/services/msalInstance";
 
 async function getAccessToken(): Promise<string | null> {
   const accounts = msalInstance.getAllAccounts();

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { getTitleByPath } from "../../../app/routes";
+import { getTitleByPath } from "@/app/routes";
 
 function DocumentTitle() {
   const location = useLocation();

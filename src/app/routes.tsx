@@ -1,9 +1,9 @@
 import type { RouteObject } from "react-router-dom";
-import Layout from "../shared/components/layout/Layout";
-import NotFoundPage from "../shared/pages/NotFoundPage";
-import HomePage from "../shared/pages/HomePage";
-import UsersPage from "../features/users/pages/UsersPage";
-import { ErrorBoundary } from "../shared/components/error/ErrorBoundary";
+import Layout from "@/shared/components/layout/Layout";
+import NotFoundPage from "@/shared/pages/NotFoundPage";
+import HomePage from "@/shared/pages/HomePage";
+import UsersPage from "@/features/users/pages/UsersPage";
+import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
 
 export const ROUTE_PATHS = {
   HOME: "/",

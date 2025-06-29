@@ -1,10 +1,10 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import Header from "./Header";
-import LoadingSpinner from "../common/LoadingSpinner";
-import type { IWrapperProps } from "../../interfaces/IError";
-import DocumentTitle from "./DocumentTitle";
-import TrackPageView from "./TrackPageView";
+import Header from "@/shared/components/layout/Header";
+import LoadingSpinner from "@/shared/components/common/LoadingSpinner";
+import type { IWrapperProps } from "@/shared/interfaces/IError";
+import DocumentTitle from "@/shared/components/layout/DocumentTitle";
+import TrackPageView from "@/shared/components/layout/TrackPageView";
 
 function Layout({ children }: IWrapperProps): React.ReactElement {
   return (

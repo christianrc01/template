@@ -3,11 +3,8 @@ import {
   createSlice,
   type PayloadAction,
 } from "@reduxjs/toolkit";
-import type {
-  User,
-  UsersState,
-} from "../../../shared/interfaces/IUser";
-import type { ApiCallPayload } from "../../../shared/interfaces/IMiddleware";
+import type { User, UsersState } from "@/shared/interfaces/IUser";
+import type { ApiCallPayload } from "@/shared/interfaces/IMiddleware";
 
 const usersAdapter = createEntityAdapter<User, number>({
   selectId: (user) => user.id,

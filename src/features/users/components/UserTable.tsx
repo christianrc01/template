@@ -6,8 +6,8 @@ import {
 } from "@progress/kendo-react-grid";
 import { process, type State } from "@progress/kendo-data-query";
 import { useState } from "react";
-import type { UserProps } from "../../../shared/interfaces/IUser";
-import "../../../shared/styles/kendo-overrides.css"
+import type { UserProps } from "@/shared/interfaces/IUser";
+import "@/shared/styles/kendo-overrides.css";
 
 function UserTable({ users }: { users: UserProps["user"][] }) {
   const [dataState, setDataState] = useState<State>({

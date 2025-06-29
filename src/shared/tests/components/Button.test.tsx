@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import Button from "../../components/common/Button";
+import Button from "@/shared/components/common/Button";
 
 describe("Button Component", () => {
   // Test 1: Render Button with default props

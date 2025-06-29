@@ -1,4 +1,4 @@
-import { ROUTE_PATHS } from "../../../app/routes";
+import { ROUTE_PATHS } from "@/app/routes";
 
 function Footer() {
   const footerLinks = [

@@ -1,5 +1,5 @@
-import type { IErrorFallbackProps } from "../../interfaces/IError";
-import Button from "../common/Button";
+import type { IErrorFallbackProps } from "@/shared/interfaces/IError";
+import Button from "@/shared/components/common/Button";
 
 function ErrorMessage({ error, onReset }: IErrorFallbackProps) {
   return (

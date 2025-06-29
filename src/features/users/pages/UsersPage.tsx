@@ -1,10 +1,10 @@
 import { useState } from "react";
-import LoadingSpinner from "../../../shared/components/common/LoadingSpinner";
-import ErrorMessage from "../../../shared/components/error/ErrorMessage";
-import UserTable from "../components/UserTable";
-import useUsers from "../hooks/useUsers";
-import UserCard from "../components/UserCard";
-import Button from "../../../shared/components/common/Button";
+import LoadingSpinner from "@/shared/components/common/LoadingSpinner";
+import ErrorMessage from "@/shared/components/error/ErrorMessage";
+import UserTable from "@/features/users/components/UserTable";
+import useUsers from "@/features/users/hooks/useUsers";
+import UserCard from "@/features/users/components/UserCard";
+import Button from "@/shared/components/common/Button";
 
 function UsersPage() {
   const { users, loading, error, retry } = useUsers();

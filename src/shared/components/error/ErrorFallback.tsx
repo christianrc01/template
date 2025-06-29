@@ -1,7 +1,6 @@
-// import type { JSX } from "react";
-import IconInfo from "../../icons/IconInfo";
-import type { IErrorFallbackProps } from "../../interfaces/IError";
-import Button from "../common/Button";
+import IconInfo from "@/shared/icons/IconInfo";
+import type { IErrorFallbackProps } from "@/shared/interfaces/IError";
+import Button from "@/shared/components/common/Button";
 
 function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (

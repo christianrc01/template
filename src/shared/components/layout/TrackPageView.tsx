@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { appInsights } from "../../../app/appInsights";
+import { appInsights } from "@/app/appInsights";
 
 function TrackPageView() {
   const location = useLocation();

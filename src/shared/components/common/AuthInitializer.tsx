@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useMsal } from "@azure/msal-react";
-import { loginRequest } from "../../utils/authConfig";
+import { loginRequest } from "@/shared/utils/authConfig";
 import { InteractionStatus } from "@azure/msal-browser";
 
 function AuthInitializer() {

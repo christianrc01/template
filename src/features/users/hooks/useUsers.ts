@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../app/hooks";
-import { selectAllUsers, fetchUsers } from "../slices/usersSlice";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { selectAllUsers, fetchUsers } from "@/features/users/slices/usersSlice";
 
 function useUsers() {
   const dispatch = useAppDispatch();

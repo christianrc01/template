@@ -1,7 +1,7 @@
-import IconMail from "../../../shared/icons/IconMail";
-import IconPhone from "../../../shared/icons/IconPhone";
-import type { UserProps } from "../../../shared/interfaces/IUser";
-import ContactItem from "./ContactItem";
+import IconMail from "@/shared/icons/IconMail";
+import IconPhone from "@/shared/icons/IconPhone";
+import type { UserProps } from "@/shared/interfaces/IUser";
+import ContactItem from "@/features/users/components/ContactItem";
 
 function UserCard({ user }: UserProps) {
   return (

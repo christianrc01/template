@@ -7,14 +7,14 @@ import {
   vi,
   type MockedFunction,
 } from "vitest";
-import useUsers from "../../hooks/useUsers";
-import { useAppDispatch, useAppSelector } from "../../../../app/hooks";
-import { fetchUsers, selectAllUsers } from "../../slices/usersSlice";
-import { mockUsers } from "../data/mockUsers";
+import useUsers from "@/features/users/hooks/useUsers";
+import { useAppDispatch, useAppSelector } from "@/app/hooks";
+import { fetchUsers, selectAllUsers } from "@/features/users/slices/usersSlice";
+import { mockUsers } from "@/features/users/tests/data/mockUsers";
 
 // Mock the hooks
-vi.mock("../../../../app/hooks");
-vi.mock("../../slices/usersSlice", async (importOriginal) => {
+vi.mock("@/app/hooks");
+vi.mock("@/features/users/slices/usersSlice", async (importOriginal) => {
   const actual = await importOriginal();
   return {
     ...(actual as object),
