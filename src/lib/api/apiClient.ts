@@ -1,4 +1,4 @@
-import getAccessToken from "@/features/auth/services/authService";
+import { authController } from "@/features/auth/controllers/authController";
 import axios, {
   AxiosError,
   type AxiosInstance,
@@ -14,7 +14,7 @@ function createApiClient(): AxiosInstance {
 
   instance.interceptors.request.use(
     async (config: InternalAxiosRequestConfig) => {
-      const token = await getAccessToken();
+      const token = await authController.getToken();
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -24,16 +24,22 @@ function createApiClient(): AxiosInstance {
 
   instance.interceptors.response.use(
     (response: AxiosResponse) => response,
-    (error: AxiosError) => {
+    async (error: AxiosError) => {
       if (error.response) {
+        const { status, data } = error.response;
+
+        if (status === 401) {
+          window.location.href = "/";
+        }
+
         return Promise.reject({
           message:
-            (error.response.data as { message?: string })?.message ||
-            "Error in the request",
-          status: error.response.status,
-          data: error.response.data,
+            (data as { message?: string })?.message || "Error in the request",
+          status,
+          data,
         });
       }
+
       return Promise.reject(error);
     }
   );
