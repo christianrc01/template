@@ -1,4 +1,4 @@
-import { renderHook } from "@testing-library/react";
+import { renderHook, act } from "@testing-library/react";
 import {
   beforeEach,
   describe,
@@ -8,129 +8,152 @@ import {
   type MockedFunction,
 } from "vitest";
 import useUsers from "@/features/users/hooks/useUsers";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { fetchUsers, selectAllUsers } from "@/features/users/slices/usersSlice";
-import { mockUsers } from "@/features/users/tests/data/mockUsers";
+import { usersController } from "@/features/users/controllers/usersController";
+import { mockUsers } from "@/features/users/tests/mocks/mockUsers";
 
-// Mock the hooks
-vi.mock("@/app/hooks");
-vi.mock("@/features/users/slices/usersSlice", async (importOriginal) => {
-  const actual = await importOriginal();
-  return {
-    ...(actual as object),
-    selectAllUsers: vi.fn(),
-  };
-});
+// Mock del usersController
+vi.mock("@/features/users/controllers/usersController", () => ({
+  usersController: {
+    getState: vi.fn(),
+    subscribe: vi.fn(),
+    loadUsers: vi.fn(),
+    getUserById: vi.fn(),
+    refresh: vi.fn(),
+  },
+}));
 
-describe("useUsers hook", () => {
-  const mockDispatch = vi.fn();
-
+describe("useUsers Hook", () => {
   beforeEach(() => {
+    // Reset mocks before each test
     vi.clearAllMocks();
 
-    // Mock useAppSelector for loading and error
+    // Initial mock configuration
     (
-      useAppSelector as MockedFunction<typeof useAppSelector>
-    ).mockImplementation((selector) => {
-      // Handle the selector from the hook
-      if (selector === selectAllUsers) {
-        return mockUsers;
-      }
-      // Handle the state.users selector
-      return {
-        loading: false,
-        error: null,
-      };
+      usersController.getState as MockedFunction<
+        typeof usersController.getState
+      >
+    ).mockReturnValue({
+      users: [],
+      loading: false,
+      error: null,
     });
 
-    // Mock selectAllUsers selector
     (
-      selectAllUsers as MockedFunction<typeof selectAllUsers>
-    ).mockImplementation(() => mockUsers);
-
-    // Mock useAppDispatch
-    (useAppDispatch as MockedFunction<typeof useAppDispatch>).mockReturnValue(
-      mockDispatch
-    );
+      usersController.subscribe as MockedFunction<
+        typeof usersController.subscribe
+      >
+    ).mockImplementation((callback) => {
+      mockCallback = callback;
+      return () => {}; // Mock de unsubscribe
+    });
   });
 
-  it("should return users, loading, error and retry function", () => {
+  let mockCallback: (() => void) | null = null;
+
+  // 1. Initial status test
+  it("should return initial state", () => {
     const { result } = renderHook(() => useUsers());
 
     expect(result.current).toEqual({
-      users: mockUsers,
+      users: [],
       loading: false,
       error: null,
-      retry: expect.any(Function),
+      getUser: expect.any(Function),
+      refetch: expect.any(Function),
     });
   });
 
-  it("should dispatch fetchUsers on mount", () => {
+  // 2. Initial load test
+  it("should call loadUsers when empty and not loading", () => {
     renderHook(() => useUsers());
 
-    expect(mockDispatch).toHaveBeenCalledWith(fetchUsers());
+    expect(usersController.loadUsers).toHaveBeenCalledTimes(1);
   });
 
-  it("should retry fetching when retry is called", async () => {
-    const { result } = renderHook(() => useUsers());
-
-    // Clear initial call
-    mockDispatch.mockClear();
-    result.current.retry();
-
-    expect(mockDispatch).toHaveBeenCalledWith(fetchUsers());
-  });
-
-  it("should return loading state when true", () => {
+  // 3. Status update test
+  it("should update state when controller notifies changes", () => {
     (
-      useAppSelector as MockedFunction<typeof useAppSelector>
-    ).mockImplementation((selector) => {
-      if (selector === selectAllUsers) {
-        return mockUsers;
-      }
-      return {
-        loading: true,
-        error: null,
-      };
-    });
-
-    const { result } = renderHook(() => useUsers());
-    expect(result.current.loading).toBe(true);
-  });
-
-  it("should return error state when present", () => {
-    const errorMessage = "Network error";
-    (
-      useAppSelector as MockedFunction<typeof useAppSelector>
-    ).mockImplementation((selector) => {
-      if (selector === selectAllUsers) {
-        return mockUsers;
-      }
-      return {
+      usersController.getState as MockedFunction<
+        typeof usersController.getState
+      >
+    )
+      .mockReturnValueOnce({
+        users: [],
         loading: false,
-        error: errorMessage,
-      };
-    });
+        error: null,
+      })
+      .mockReturnValueOnce({
+        users: mockUsers,
+        loading: false,
+        error: null,
+      });
 
     const { result } = renderHook(() => useUsers());
-    expect(result.current.error).toBe(errorMessage);
+
+    act(() => {
+      if (mockCallback) mockCallback();
+    });
+
+    expect(result.current.users).toEqual(mockUsers);
   });
 
-  it("should return empty users array when loading", () => {
-    (
-      useAppSelector as MockedFunction<typeof useAppSelector>
-    ).mockImplementation((selector) => {
-      if (selector === selectAllUsers) {
-        return [];
-      }
-      return {
-        loading: true,
-        error: null,
-      };
+  // 4. Methods test
+  it("should expose controller methods", () => {
+    const { result } = renderHook(() => useUsers());
+
+    // Test de getUser
+    act(() => {
+      result.current.getUser(1);
     });
+    expect(usersController.getUserById).toHaveBeenCalledWith(1);
+
+    // Test de refetch
+    act(() => {
+      result.current.refetch();
+    });
+    expect(usersController.refresh).toHaveBeenCalledTimes(1);
+  });
+
+  // 5. Cleanliness test
+  it("should unsubscribe on unmount", () => {
+    const mockUnsubscribe = vi.fn();
+    (
+      usersController.subscribe as MockedFunction<
+        typeof usersController.subscribe
+      >
+    ).mockReturnValue(mockUnsubscribe);
+
+    const { unmount } = renderHook(() => useUsers());
+    unmount();
+
+    expect(mockUnsubscribe).toHaveBeenCalledTimes(1);
+  });
+
+  // 6. Error handling test
+  it("should handle error state", () => {
+    const error = new Error("Failed to load");
+    (
+      usersController.getState as MockedFunction<
+        typeof usersController.getState
+      >
+    )
+      .mockReturnValueOnce({
+        users: [],
+        loading: false,
+        error: null,
+      })
+      .mockReturnValueOnce({
+        users: [],
+        loading: false,
+        error: error,
+      });
 
     const { result } = renderHook(() => useUsers());
-    expect(result.current.users).toEqual([]);
-    expect(result.current.loading).toBe(true);
+
+    act(() => {
+      if (mockCallback) mockCallback();
+    });
+
+    expect(result.current.error).toBe(error);
   });
 });

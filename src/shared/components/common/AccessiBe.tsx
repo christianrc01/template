@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const AccessiBe = () => {
+function AccessiBe() {
   useEffect(() => {
     if (import.meta.env.MODE !== "production") return;
     const script = document.createElement("script");
@@ -26,6 +26,6 @@ const AccessiBe = () => {
   }, []);
 
   return null;
-};
+}
 
 export default AccessiBe;

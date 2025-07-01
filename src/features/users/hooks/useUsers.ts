@@ -1,17 +1,28 @@
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/app/hooks";
-import { selectAllUsers, fetchUsers } from "@/features/users/slices/usersSlice";
+import { useEffect, useState } from "react";
+import { usersController } from "@/features/users/controllers/usersController";
 
 function useUsers() {
-  const dispatch = useAppDispatch();
-  const users = useAppSelector(selectAllUsers);
-  const { loading, error } = useAppSelector((state) => state.users);
+  const [state, setState] = useState(usersController.getState());
 
   useEffect(() => {
-    dispatch(fetchUsers());
-  }, [dispatch]);
+    const unsubscribe = usersController.subscribe(() => {
+      setState(usersController.getState());
+    });
 
-  return { users, loading, error, retry: () => dispatch(fetchUsers()) };
+    if (state.users.length === 0 && !state.loading) {
+      usersController.loadUsers();
+    }
+
+    return unsubscribe;
+  }, []);
+
+  return {
+    users: state.users,
+    loading: state.loading,
+    error: state.error,
+    getUser: usersController.getUserById.bind(usersController),
+    refetch: usersController.refresh.bind(usersController),
+  };
 }
 
 export default useUsers;

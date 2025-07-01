@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMsal } from "@azure/msal-react";
-import { loginRequest } from "@/shared/utils/authConfig";
 import { InteractionStatus } from "@azure/msal-browser";
+import { loginRequest } from "@/features/auth/controllers/authConfig";
 
 function AuthInitializer() {
   const { instance, accounts, inProgress } = useMsal();

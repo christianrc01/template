@@ -1,6 +1,6 @@
-import IconInfo from "@/shared/icons/IconInfo";
-import type { IErrorFallbackProps } from "@/shared/interfaces/IError";
+import IconInfo from "@/shared/components/icons/IconInfo";
 import Button from "@/shared/components/common/Button";
+import type { IErrorFallbackProps } from "@/shared/types/IError";
 
 function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (

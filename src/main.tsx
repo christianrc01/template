@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "@/App";
 import "@/shared/styles/index.css";
 import "@progress/kendo-theme-default/dist/all.css";
-import msalInstance from "@/shared/services/msalInstance";
+import msalInstance from "@/lib/utils/msalInstance";
 
 async function initializeApp() {
   // Asynchronous initialization of axe-core (only in development)

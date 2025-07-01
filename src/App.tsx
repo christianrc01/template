@@ -1,11 +1,11 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "@/app/store";
-import { routes } from "@/app/routes";
+import { store } from "@/app/store/store";
+import { routes } from "@/app/routing/routes";
 import { MsalProvider } from "@azure/msal-react";
-import AuthInitializer from "@/shared/components/common/AuthInitializer";
-import msalInstance from "@/shared/services/msalInstance";
+import AuthInitializer from "@/features/auth/components/AuthInitializer";
 import AccessiBe from "@/shared/components/common/AccessiBe";
+import msalInstance from "@/lib/utils/msalInstance";
 import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
 
 function App() {

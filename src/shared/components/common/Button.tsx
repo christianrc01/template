@@ -1,4 +1,4 @@
-import type { ButtonProps } from "@/shared/interfaces/IShared";
+import type { ButtonProps } from "@/shared/types/IShared";
 
 function Button({
   variant = "primary",

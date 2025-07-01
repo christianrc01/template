@@ -1,31 +1,34 @@
 import path from "path";
-import { defineConfig } from "vitest/config";
+import { defineConfig, loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react-swc";
-import proxyRules from "./src/app/config/proxyRules";
+import getProxyRules from "./src/lib/config/proxyRules";
 
-// https://vite.dev/config/
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": path.resolve(__dirname, "src"),
-    },
-  },
-  test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./src/app/setupTests.ts",
-  },
-  server: {
-    proxy: proxyRules,
-  },
-  build: {
-    outDir: "dist",
-    rollupOptions: {
-      input: {
-        main: path.resolve(__dirname, "index.html"),
+export default defineConfig(({ mode }) => {
+  const env = loadEnv(mode, process.cwd(), "");
+
+  return {
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "src"),
       },
     },
-  },
+    server: {
+      proxy: getProxyRules(env.VITE_API_BASE_URL),
+    },
+    build: {
+      outDir: "dist",
+      rollupOptions: {
+        input: {
+          main: path.resolve(__dirname, "index.html"),
+        },
+      },
+    },
+    test: {
+      globals: true,
+      environment: "jsdom",
+      setupFiles: "./src/lib/config/setupTests.ts",
+    },
+  };
 });
