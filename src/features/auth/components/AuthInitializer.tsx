@@ -34,9 +34,13 @@ function AuthInitializer() {
 
   if (inProgress !== InteractionStatus.None || !initialized) {
     return (
-      <div className="grid place-items-center w-screen">
+      <main
+        className="grid place-items-center w-screen"
+        role="status"
+        aria-live="polite"
+      >
         <LoadingSpinner />
-      </div>
+      </main>
     );
   }
 

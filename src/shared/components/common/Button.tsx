@@ -4,6 +4,7 @@ function Button({
   variant = "primary",
   children,
   className = "",
+  type = "button",
   ...props
 }: ButtonProps) {
   const baseClasses = "px-4 py-2 rounded-full transition-colors font-medium";
@@ -18,9 +19,12 @@ function Button({
       "bg-gray-100 border border-white hover:bg-white hover:text-blue-600 dark:border-gray-500 dark:text-gray-600 dark:hover:bg-gray-700 dark:hover:text-white",
   };
 
+  const variantStyle = variantClasses[variant] ?? variantClasses["primary"];
+
   return (
     <button
-      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+      type={type}
+      className={`${baseClasses} ${variantStyle} ${className}`}
       {...props}
     >
       {children}

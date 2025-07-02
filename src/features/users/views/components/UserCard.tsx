@@ -5,19 +5,31 @@ import ContactItem from "@/features/users/views/components/ContactItem";
 
 function UserCard({ user }: UserProps) {
   return (
-    <div className="p-6 border border-gray-200 dark:border-gray-600 rounded-4xl shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800 max-w-md">
+    <article
+      aria-labelledby={`user-${user.id}-name`}
+      className="p-6 border border-gray-200 dark:border-gray-600 rounded-4xl shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800 max-w-md"
+    >
       <div className="flex items-start space-x-4">
         <div className="flex-1">
-          <h3 className="text-xl font-bold text-gray-800 dark:text-gray-100">
+          <h3
+            id={`user-${user.id}-name`}
+            className="text-xl font-bold text-gray-800 dark:text-gray-100"
+          >
             {user.name}
           </h3>
           <p className="text-gray-500 dark:text-gray-400">@{user.username}</p>
 
           <div className="mt-4 space-y-2">
-            <ContactItem icon={<IconMail />} text={user.email} />
-            <ContactItem icon={<IconPhone />} text={user.phone} />
             <ContactItem
-              icon={<IconPhone />}
+              icon={<IconMail aria-hidden="true" />}
+              text={user.email}
+            />
+            <ContactItem
+              icon={<IconPhone aria-hidden="true" />}
+              text={user.phone}
+            />
+            <ContactItem
+              icon={<IconPhone aria-hidden="true" />}
               text={
                 <a
                   href={`https://${user.website}`}
@@ -31,7 +43,7 @@ function UserCard({ user }: UserProps) {
             />
           </div>
 
-          <div className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-2xl">
+          <address className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-2xl">
             <h4 className="font-medium text-gray-700 dark:text-gray-300">
               Address
             </h4>
@@ -43,7 +55,7 @@ function UserCard({ user }: UserProps) {
             <p className="text-sm text-gray-500 dark:text-gray-500 mt-1">
               Coordinates: {user.address.geo.lat}, {user.address.geo.lng}
             </p>
-          </div>
+          </address>
 
           <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-2xl">
             <h4 className="font-medium text-gray-700 dark:text-gray-300">
@@ -61,7 +73,7 @@ function UserCard({ user }: UserProps) {
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 }
 

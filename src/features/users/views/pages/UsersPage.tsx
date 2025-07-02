@@ -19,34 +19,45 @@ function UsersPage() {
   if (error) return <ErrorMessage error={error} onReset={refetch} />;
 
   return (
-    <div className="w-full text-center">
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-4xl font-bold text-gray-800 dark:text-gray-200">
+    <article className="w-full text-center" aria-labelledby="user-page-title">
+      <header className="flex justify-between items-center mb-6">
+        <h1
+          id="user-page-title"
+          className="text-4xl font-bold text-gray-800 dark:text-gray-200"
+        >
           Users
         </h1>
-        <div className="flex space-x-2">
+        <div
+          className="flex space-x-2"
+          role="group"
+          aria-label="View mode toggle"
+        >
           {(["table", "cards"] as const).map((mode) => (
             <Button
               key={mode}
               onClick={() => setViewMode(mode)}
               variant={viewMode === mode ? "primary" : "outline-white"}
+              aria-pressed={viewMode === mode}
             >
               {mode === "cards" ? "Cards View" : "Table View"}
             </Button>
           ))}
         </div>
-      </div>
+      </header>
 
       {viewMode === "cards" ? (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <section
+          aria-label="User cards"
+          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+        >
           {users.map((user) => (
             <UserCard key={user.id} user={user} />
           ))}
-        </div>
+        </section>
       ) : (
         <UserTable users={users} />
       )}
-    </div>
+    </article>
   );
 }
 

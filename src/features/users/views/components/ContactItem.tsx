@@ -6,10 +6,10 @@ function ContactItem({
   text: React.ReactNode;
 }) {
   return (
-    <p className="text-gray-600 dark:text-gray-400 flex items-center gap-2">
+    <div className="text-gray-600 dark:text-gray-400 flex items-center gap-2">
       {icon}
       {text}
-    </p>
+    </div>
   );
 }
 
