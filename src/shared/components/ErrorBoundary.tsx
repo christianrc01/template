@@ -1,9 +1,9 @@
-import React from "react";
+import { Component, type ErrorInfo } from "react";
 import { appInsights } from "@/lib/utils/appInsights";
-import ErrorFallback from "@/shared/components/error/ErrorFallback";
+import ErrorFallback from "@/shared/views/components/error/ErrorFallback";
 import type { IErrorBoundaryState, IWrapperProps } from "@/shared/types/IError";
 
-export class ErrorBoundary extends React.Component<
+export class ErrorBoundary extends Component<
   IWrapperProps,
   IErrorBoundaryState
 > {
@@ -16,7 +16,7 @@ export class ErrorBoundary extends React.Component<
     return { hasError: true, error };
   }
 
-  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
     appInsights.trackException({
       exception: error,
       properties: {

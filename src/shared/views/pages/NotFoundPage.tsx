@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { ROUTE_PATHS } from "@/app/routing/routes";
-import Button from "@/shared/components/common/Button";
+import { ROUTE_PATHS } from "@/app/routes";
+import Button from "@/shared/views/components/common/Button";
 
 function NotFoundPage() {
   return (

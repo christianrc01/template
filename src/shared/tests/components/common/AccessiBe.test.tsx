@@ -1,6 +1,6 @@
 import { render, cleanup } from "@testing-library/react";
 import { describe, expect, it, vi, afterEach, beforeEach } from "vitest";
-import AccessiBe from "@/shared/components/common/AccessiBe";
+import AccessiBe from "@/shared/components/AccessiBe";
 
 const mockAppendChild = vi.fn();
 const mockRemoveChild = vi.fn();

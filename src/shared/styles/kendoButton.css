@@ -1,0 +1,24 @@
+@import "tailwindcss";
+
+/* --- Base Kendo Button --- */
+.k-button {
+  @apply px-4 py-2 !rounded-full !font-medium transition-colors;
+}
+
+/* --- Custom variants --- */
+
+.k-button.k-button-primary {
+  @apply !bg-blue-500 !text-white hover:!bg-blue-600 dark:!bg-blue-600 dark:hover:!bg-blue-700;
+}
+
+.k-button.k-button-secondary {
+  @apply !bg-gray-500 !text-white hover:!bg-gray-600 dark:!bg-gray-600 dark:hover:!bg-gray-700;
+}
+
+.k-button.k-button-danger {
+  @apply !bg-red-600 !text-white hover:!bg-red-700 focus:!ring-red-500 dark:!bg-red-700 dark:hover:!bg-red-800 dark:focus:!ring-red-600;
+}
+
+.k-button.k-button-outline-white {
+  @apply !bg-gray-100 !border !border-white hover:!bg-white hover:!text-blue-600 dark:!border-gray-500 dark:!text-gray-600 dark:hover:!bg-gray-700 dark:hover:!text-white;
+}

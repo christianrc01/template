@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
-import Button from "@/shared/components/common/Button";
-import { ROUTE_PATHS } from "@/app/routing/routes";
+import Button from "@/shared/views/components/common/Button";
+import { ROUTE_PATHS } from "@/app/routes";
+import { authController } from "@/features/auth/controllers/authController";
 
 function Header() {
   const mainLinks = [
     { to: ROUTE_PATHS.HOME, label: "Home" },
     { to: ROUTE_PATHS.USERS, label: "Users" },
   ];
+
+  const handleLogout = () => {
+    authController.logout();
+  };
 
   return (
     <header className="bg-gray-800 text-white dark:bg-gray-900 dark:border-b dark:border-gray-700 shadow-md">
@@ -22,9 +27,9 @@ function Header() {
         </nav>
 
         <nav aria-label="User navigation" className="flex gap-4">
-          <Link to={ROUTE_PATHS.PROFILE}>
-            <Button variant="primary">Profile</Button>
-          </Link>
+          <Button variant="primary" aria-label="Logout" onClick={handleLogout}>
+            Logout
+          </Button>
         </nav>
       </div>
     </header>

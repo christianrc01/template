@@ -8,7 +8,7 @@ vi.mock("@azure/msal-react", () => ({
   useMsal: vi.fn(),
 }));
 
-vi.mock("@/shared/components/common/LoadingSpinner", () => ({
+vi.mock("@/shared/views/components/common/LoadingSpinner", () => ({
   default: () => <div>Loading...</div>,
 }));
 

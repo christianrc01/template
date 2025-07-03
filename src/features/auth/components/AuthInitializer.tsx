@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useMsal } from "@azure/msal-react";
 import { InteractionStatus } from "@azure/msal-browser";
-import LoadingSpinner from "@/shared/components/common/LoadingSpinner";
+import LoadingSpinner from "@/shared/views/components/common/LoadingSpinner";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { routes } from "@/app/routing/routes";
+import { routes } from "@/app/routes";
 
 const router = createBrowserRouter(routes);
 

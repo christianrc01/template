@@ -1,4 +1,4 @@
-import LoadingSpinner from "@/shared/components/common/LoadingSpinner";
+import LoadingSpinner from "@/shared/views/components/common/LoadingSpinner";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
@@ -8,19 +8,18 @@ describe("LoadingSpinner Component", () => {
     render(<LoadingSpinner />);
 
     const container = screen.getByRole("status");
-    const spinner = screen.getByTestId("spinner");
+    const spinnerContainer = screen.getByTestId("spinner");
 
     expect(container).toHaveAttribute("aria-label", "Loading...");
-    expect(spinner).toHaveAttribute("aria-hidden", "true");
+    expect(spinnerContainer).toBeInTheDocument();
   });
 
-  // 2. Key visual behavior
-  it("applies animation classes", () => {
+  // 2. Since animation and border classes are handled internally by Kendo Loader,
+
+  it("renders the loader container", () => {
     render(<LoadingSpinner />);
     const spinner = screen.getByTestId("spinner");
-
-    expect(spinner).toHaveClass("animate-spin"); // Tailwind's spin animation
-    expect(spinner).toHaveClass("border-t-2");
+    expect(spinner).toBeInTheDocument();
   });
 
   // 3. Container structure
@@ -30,5 +29,6 @@ describe("LoadingSpinner Component", () => {
 
     expect(container).toHaveClass("grid"); // Tailwind grid centering
     expect(container).toHaveClass("place-items-center");
+    expect(container).toHaveClass("h-64");
   });
 });

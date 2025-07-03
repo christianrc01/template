@@ -1,6 +1,7 @@
-import IconInfo from "@/shared/components/icons/IconInfo";
-import Button from "@/shared/components/common/Button";
+import IconInfo from "@/shared/icons/IconInfo";
+import Button from "@/shared/views/components/common/Button";
 import type { IErrorFallbackProps } from "@/shared/types/IError";
+import { responsiveIconSize } from "@/shared/styles/Tailwind";
 
 function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (
@@ -15,7 +16,7 @@ function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
       >
         <div className="flex items-start">
           <div className="flex-shrink-0 mt-0.5 text-red-500 dark:text-red-400">
-            <IconInfo aria-hidden="true" />
+            <IconInfo aria-hidden="true" className={responsiveIconSize} />
           </div>
           <div className="ml-4">
             <h2

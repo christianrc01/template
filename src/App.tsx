@@ -2,9 +2,9 @@ import { Provider } from "react-redux";
 import { store } from "@/app/store/store";
 import { MsalProvider } from "@azure/msal-react";
 import AuthInitializer from "@/features/auth/components/AuthInitializer";
-import AccessiBe from "@/shared/components/common/AccessiBe";
+import AccessiBe from "@/shared/components/AccessiBe";
 import msalInstance from "@/lib/utils/msalInstance";
-import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
+import { ErrorBoundary } from "@/shared/components/ErrorBoundary";
 
 function App() {
   return (

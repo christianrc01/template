@@ -1,19 +1,17 @@
-import React from "react";
+import { type SVGProps } from "react";
 
 function IconInfo({
   fill = "none",
   stroke = "currentColor",
-  width = "24",
-  height = "24",
+  className = "w-6 h-6",
   ...props
-}: React.SVGProps<SVGSVGElement>) {
+}: SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={width}
-      height={height}
       viewBox="0 0 24 24"
       fill={fill}
+      className={className}
       {...props}
     >
       <path

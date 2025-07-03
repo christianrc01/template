@@ -1,11 +1,11 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { appInsights } from "@/lib/utils/appInsights";
-import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
-import ErrorFallback from "@/shared/components/error/ErrorFallback";
+import { ErrorBoundary } from "@/shared/components/ErrorBoundary";
+import ErrorFallback from "@/shared/views/components/error/ErrorFallback";
 
 // Mocks
-vi.mock("@/shared/components/error/ErrorFallback", () => ({
+vi.mock("@/shared/views/components/error/ErrorFallback", () => ({
   default: vi.fn(() => <div>Mocked ErrorFallback</div>),
 }));
 

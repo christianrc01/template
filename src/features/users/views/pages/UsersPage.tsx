@@ -1,8 +1,8 @@
 import { useState } from "react";
-import LoadingSpinner from "@/shared/components/common/LoadingSpinner";
-import Button from "@/shared/components/common/Button";
+import LoadingSpinner from "@/shared/views/components/common/LoadingSpinner";
+import Button from "@/shared/views/components/common/Button";
 import useUsers from "@/features/users/hooks/useUsers";
-import ErrorMessage from "@/shared/components/error/ErrorMessage";
+import ErrorMessage from "@/shared/views/components/error/ErrorMessage";
 import UserCard from "@/features/users/views/components/UserCard";
 import UserTable from "@/features/users/views/components/UserTable";
 
@@ -20,15 +20,15 @@ function UsersPage() {
 
   return (
     <article className="w-full text-center" aria-labelledby="user-page-title">
-      <header className="flex justify-between items-center mb-6">
+      <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 text-center sm:text-left">
         <h1
           id="user-page-title"
-          className="text-4xl font-bold text-gray-800 dark:text-gray-200"
+          className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-200"
         >
           Users
         </h1>
         <div
-          className="flex space-x-2"
+          className="flex justify-center sm:justify-end flex-wrap gap-2"
           role="group"
           aria-label="View mode toggle"
         >
@@ -48,7 +48,7 @@ function UsersPage() {
       {viewMode === "cards" ? (
         <section
           aria-label="User cards"
-          className="grid gap-4 md:grid-cols-2 lg:grid-cols-3"
+          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4"
         >
           {users.map((user) => (
             <UserCard key={user.id} user={user} />

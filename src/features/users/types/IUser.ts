@@ -1,4 +1,5 @@
 import type { EntityState } from "@reduxjs/toolkit";
+import type { ReactNode } from "react";
 
 interface Geo {
   lat: string;
@@ -37,4 +38,10 @@ export type UsersState = EntityState<User, number> & {
 
 export interface UserProps {
   user: User;
+}
+
+export interface MockGridProps {
+  children: ReactNode;
+  data: { data: User[] };
+  onDataStateChange: (event: { dataState: { skip: number } }) => void;
 }

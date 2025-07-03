@@ -1,5 +1,5 @@
 interface Window {
   acsbJS?: {
-    init: (config: any) => void;
+    init: (config: AcsbInitConfig) => void;
   };
 }

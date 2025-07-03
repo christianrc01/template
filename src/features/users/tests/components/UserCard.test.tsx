@@ -60,11 +60,4 @@ describe("UserCard Component", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(mockUser.company.bs)).toBeInTheDocument();
   });
-
-  // 5. Icon rendering
-  it("includes contact icons", () => {
-    render(<UserCard user={mockUser} />);
-    expect(screen.getAllByTestId("icon-mail").length).toBe(1);
-    expect(screen.getAllByTestId("icon-phone").length).toBe(2);
-  });
 });

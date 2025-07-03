@@ -1,9 +1,10 @@
 import type { RouteObject } from "react-router-dom";
-import NotFoundPage from "@/shared/pages/NotFoundPage";
-import HomePage from "@/shared/pages/HomePage";
+import NotFoundPage from "@/shared/views/pages/NotFoundPage";
+import HomePage from "@/shared/views/pages/HomePage";
 import UsersPage from "@/features/users/views/pages/UsersPage";
-import Layout from "@/shared/layout/Layout";
-import { ErrorBoundary } from "@/shared/components/error/ErrorBoundary";
+import Layout from "@/shared/views/layouts/Layout";
+import { ErrorBoundary } from "@/shared/components/ErrorBoundary";
+import UserProfilePage from "@/features/users/views/pages/UserProfilePage";
 
 export const ROUTE_PATHS = {
   HOME: "/",
@@ -12,6 +13,7 @@ export const ROUTE_PATHS = {
   TERMS: "/terms",
   CONTACT: "/contact",
   PRIVACY: "/privacy",
+  USER: "/user/:id",
   // Add more routes as needed
 } as const;
 
@@ -24,6 +26,7 @@ export const ROUTE_TITLES: Record<RoutePaths, string> = {
   TERMS: "Terms and conditions | Template app",
   CONTACT: "Contact | Template app",
   PRIVACY: "Privacy Policy | Template app",
+  USER: "User Profile | Template app",
   // Add more routes as needed
 } as const;
 
@@ -43,6 +46,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTE_PATHS.USERS.substring(1),
         element: <UsersPage />,
+      },
+      {
+        path: ROUTE_PATHS.USER.substring(1),
+        element: <UserProfilePage />,
       },
       {
         path: "*",

@@ -1,7 +1,8 @@
-import IconMail from "@/shared/components/icons/IconMail";
-import IconPhone from "@/shared/components/icons/IconPhone";
+import IconMail from "@/shared/icons/IconMail";
+import IconPhone from "@/shared/icons/IconPhone";
 import type { UserProps } from "@/features/users/types/IUser";
 import ContactItem from "@/features/users/views/components/ContactItem";
+import { responsiveIconSize } from "@/shared/styles/Tailwind";
 
 function UserCard({ user }: UserProps) {
   return (
@@ -9,7 +10,7 @@ function UserCard({ user }: UserProps) {
       aria-labelledby={`user-${user.id}-name`}
       className="p-6 border border-gray-200 dark:border-gray-600 rounded-4xl shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800 max-w-md"
     >
-      <div className="flex items-start space-x-4">
+      <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-4 space-y-4 sm:space-y-0">
         <div className="flex-1">
           <h3
             id={`user-${user.id}-name`}
@@ -21,15 +22,21 @@ function UserCard({ user }: UserProps) {
 
           <div className="mt-4 space-y-2">
             <ContactItem
-              icon={<IconMail aria-hidden="true" />}
+              icon={
+                <IconMail aria-hidden="true" className={responsiveIconSize} />
+              }
               text={user.email}
             />
             <ContactItem
-              icon={<IconPhone aria-hidden="true" />}
+              icon={
+                <IconPhone aria-hidden="true" className={responsiveIconSize} />
+              }
               text={user.phone}
             />
             <ContactItem
-              icon={<IconPhone aria-hidden="true" />}
+              icon={
+                <IconPhone aria-hidden="true" className={responsiveIconSize} />
+              }
               text={
                 <a
                   href={`https://${user.website}`}

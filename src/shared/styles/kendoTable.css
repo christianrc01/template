@@ -19,3 +19,8 @@
 .k-pager-info {
   @apply !text-gray-600 dark:!text-gray-400;
 }
+
+/* Review this */
+.k-grid-aria-root > [style*="background-image"] {
+  display: none;
+}
