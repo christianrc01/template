@@ -1,4 +1,4 @@
-import type { EndpointConfig } from "@/shared/types/IShared";
+import type { EndpointConfig } from "../../shared/types/IShared";
 
 export const API_ENDPOINTS: Record<string, EndpointConfig> = {
   //#region
