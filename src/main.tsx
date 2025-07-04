@@ -7,19 +7,15 @@ import "@/shared/styles/KendoTable.css";
 import "@/shared/styles/KendoButton.css";
 import "@/shared/styles/KendoPopup.css";
 
-async function initializeApp() {
-  // Asynchronous initialization of axe-core (only in development)
-  if (import.meta.env.DEV) {
-    const { default: axe } = await import("@axe-core/react");
+if (import.meta.env.DEV) {
+  import("@axe-core/react").then(({ default: axe }) => {
     axe(React, ReactDOM, 1000);
-  }
-
-  const root = ReactDOM.createRoot(document.getElementById("root")!);
-  root.render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>
-  );
+  });
 }
 
-initializeApp().catch(console.error);
+const root = ReactDOM.createRoot(document.getElementById("root")!);
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);

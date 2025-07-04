@@ -1,8 +1,8 @@
-import type { AccountInfo } from "@azure/msal-browser";
 import { authService } from "@/features/auth/models/services/authService";
+import type { SerializableAccountInfo } from "../../types/IAuth";
 
 class AuthRepository {
-  async getAccountInfo(): Promise<AccountInfo | null> {
+  async getAccountInfo(): Promise<SerializableAccountInfo | null> {
     return authService.getAccountInfo();
   }
 
