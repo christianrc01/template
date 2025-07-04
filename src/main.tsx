@@ -5,6 +5,7 @@ import "@progress/kendo-theme-default/dist/all.css";
 import "@/shared/styles/Index.css";
 import "@/shared/styles/KendoTable.css";
 import "@/shared/styles/KendoButton.css";
+import "@/shared/styles/KendoPopup.css";
 
 async function initializeApp() {
   // Asynchronous initialization of axe-core (only in development)

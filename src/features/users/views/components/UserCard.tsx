@@ -2,13 +2,13 @@ import IconMail from "@/shared/icons/IconMail";
 import IconPhone from "@/shared/icons/IconPhone";
 import type { UserProps } from "@/features/users/types/IUser";
 import ContactItem from "@/features/users/views/components/ContactItem";
-import { responsiveIconSize } from "@/shared/styles/Tailwind";
+import { responsiveIconSize } from "@/lib/config/tailwind";
 
 function UserCard({ user }: UserProps) {
   return (
     <article
       aria-labelledby={`user-${user.id}-name`}
-      className="p-6 border border-gray-200 dark:border-gray-600 rounded-4xl shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800 max-w-md"
+      className="max-w-md w-full p-6 border border-gray-200 dark:border-gray-600 rounded-4xl shadow-sm hover:shadow-md transition-shadow bg-white dark:bg-gray-800"
     >
       <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-4 space-y-4 sm:space-y-0">
         <div className="flex-1">

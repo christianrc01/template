@@ -1,7 +1,7 @@
 import IconInfo from "@/shared/icons/IconInfo";
 import Button from "@/shared/views/components/common/Button";
 import type { IErrorFallbackProps } from "@/shared/types/IError";
-import { responsiveIconSize } from "@/shared/styles/Tailwind";
+import { responsiveIconSize } from "@/lib/config/tailwind";
 
 function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (
@@ -31,7 +31,7 @@ function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
               </summary>
               <pre
                 id="error-fallback-details"
-                className="mt-2 p-3 bg-gray-50 dark:bg-gray-700 rounded text-xs text-gray-800 dark:text-gray-200 whitespace-pre-wrap break-words w-full"
+                className="mt-2 p-3 bg-gray-50 dark:bg-gray-700 rounded !text-xs text-gray-800 dark:text-gray-200 whitespace-pre-wrap break-words overflow-auto max-w-full"
               >
                 {error?.toString()}
               </pre>

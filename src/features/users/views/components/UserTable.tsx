@@ -39,7 +39,7 @@ function UserTable({ users }: { users: UserProps["user"][] }) {
   return (
     <section
       aria-labelledby="users-table-title"
-      className="overflow-x-auto w-full"
+      className="overflow-x-auto w-full rounded-2xl shadow-sm"
     >
       <Grid
         data={processedData}
@@ -48,10 +48,10 @@ function UserTable({ users }: { users: UserProps["user"][] }) {
         {...dataState}
         onDataStateChange={handleDataStateChange}
         aria-label="User data table"
-        className="min-w-[600px] sm:min-w-full rounded-2xl shadow-sm !border !border-gray-200 dark:!border-gray-600 !bg-white dark:!bg-gray-800"
+        className="min-w-[600px] sm:min-w-full rounded-2xl !border-gray-200 dark:!border-gray-600 !bg-white dark:!bg-gray-800"
       >
-        <GridToolbar className="rounded-t-2xl !bg-white dark:!bg-gray-800">
-          <div className="flex justify-between items-center w-full p-4 !bg-gradient-to-r !from-blue-50 !to-gray-50 dark:!from-gray-700 dark:!to-gray-800 !border-b !border-gray-200 dark:!border-gray-600 rounded-t-lg">
+        <GridToolbar className="!rounded-t-2xl">
+          <div className="flex justify-between items-center w-full p-4 !bg-gradient-to-r !from-blue-50 !to-gray-50 dark:!from-gray-700 dark:!to-gray-800 !border-b !border-gray-200 dark:!border-gray-600 rounded-t-xl">
             <h2
               id="users-table-title"
               className="text-xl font-bold !text-gray-800 dark:!text-gray-200"

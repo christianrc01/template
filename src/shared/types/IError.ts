@@ -1,10 +1,12 @@
+import type { ReactNode } from "react";
+
 export interface IErrorFallbackProps {
   error: Error;
   onReset?: () => void;
 }
 
 export interface IWrapperProps {
-  children?: React.ReactNode;
+  children?: ReactNode;
 }
 
 export interface IErrorBoundaryState {

@@ -26,6 +26,7 @@
     "@progress/kendo-react-inputs": "^11.1.0",
     "@progress/kendo-react-intl": "^11.1.0",
     "@progress/kendo-react-layout": "^11.2.0",
+    "@progress/kendo-react-popup": "^11.2.0",
     "@progress/kendo-theme-default": "^11.0.2",
     "@reduxjs/toolkit": "^2.8.2",
     "@tailwindcss/vite": "^4.1.10",

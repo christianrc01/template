@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, RefObject } from "react";
 import { type ButtonProps as KendoButtonProps } from "@progress/kendo-react-buttons";
 import type { GridCellProps } from "@progress/kendo-react-grid";
 
@@ -34,4 +34,22 @@ export interface AcsbInitConfig {
   triggerOffsetX?: number;
   triggerOffsetY?: number;
   triggerRadius?: string;
+}
+
+export interface NotFoundProps {
+  title?: string;
+  message?: string;
+  backTo?: string;
+  backLabel?: string;
+}
+
+export interface UseClickOutsideParams {
+  refs: Array<RefObject<Element | null>>;
+  handler: () => void;
+}
+
+export interface HeaderMenuLinksProps {
+  links: { to: string; label: string }[];
+  onLogout: () => void;
+  onLinkClick?: () => void;
 }

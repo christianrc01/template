@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { usersController } from "@/features/users/controllers/usersController";
 
-function useUsers() {
+function useUsers(userId?: number) {
   const [state, setState] = useState(usersController.getState());
 
   useEffect(() => {
@@ -9,8 +9,12 @@ function useUsers() {
       setState(usersController.getState());
     });
 
-    if (state.users.length === 0 && !state.loading) {
-      usersController.loadUsers();
+    if (!state.loading) {
+      if (userId !== undefined) {
+        usersController.loadCurrentUser(userId);
+      } else if (state.users.length === 0) {
+        usersController.loadUsers();
+      }
     }
 
     return unsubscribe;
@@ -18,10 +22,16 @@ function useUsers() {
 
   return {
     users: state.users,
+    currentUser: state.currentUser,
     loading: state.loading,
     error: state.error,
-    getUser: usersController.getUserById.bind(usersController),
-    refetch: usersController.refresh.bind(usersController),
+    refetch: () => {
+      if (userId !== undefined) {
+        usersController.loadCurrentUser(userId);
+      } else {
+        usersController.refresh();
+      }
+    },
   };
 }
 

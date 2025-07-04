@@ -4,6 +4,10 @@
   @apply !bg-white dark:!bg-gray-700 rounded-b-2xl;
 }
 
+.k-toolbar {
+  @apply !border-none !shadow-none !rounded-none !p-0 !m-0;
+}
+
 .k-pager-numbers-wrap {
   @apply !text-blue-800 dark:!text-blue-100;
 }

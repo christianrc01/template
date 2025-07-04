@@ -3,6 +3,7 @@ import { userService } from "@/features/users/models/services/userService";
 
 class UsersController {
   private users: User[] = [];
+  private currentUser: User | null = null;
   private loading = false;
   private error: Error | null = null;
   private subscribers: Array<() => void> = [];
@@ -23,6 +24,7 @@ class UsersController {
   getState() {
     return {
       users: this.users,
+      currentUser: this.currentUser,
       loading: this.loading,
       error: this.error,
     };
@@ -44,25 +46,34 @@ class UsersController {
     }
   }
 
-  async getUserById(id: number) {
+  async loadCurrentUser(id: number) {
     this.loading = true;
+    this.error = null;
     this.notify();
 
     try {
       const user = await userService.getById(id);
+      this.currentUser = user;
+
       const index = this.users.findIndex((u) => u.id === id);
-      if (index !== -1) {
+      if (index === -1) {
+        this.users.push(user);
+      } else {
         this.users[index] = user;
       }
-      return user;
     } catch (err) {
       this.error =
         err instanceof Error ? err : new Error("Failed to load user");
-      throw err;
+      this.currentUser = null;
     } finally {
       this.loading = false;
       this.notify();
     }
+  }
+
+  clearCurrentUser() {
+    this.currentUser = null;
+    this.notify();
   }
 
   async refresh() {

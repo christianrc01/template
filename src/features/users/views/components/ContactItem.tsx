@@ -1,10 +1,6 @@
-function ContactItem({
-  icon,
-  text,
-}: {
-  icon: React.ReactNode;
-  text: React.ReactNode;
-}) {
+import type { ReactNode } from "react";
+
+function ContactItem({ icon, text }: { icon: ReactNode; text: ReactNode }) {
   return (
     <div className="text-gray-600 dark:text-gray-400 flex items-center gap-2 min-w-0">
       {icon}

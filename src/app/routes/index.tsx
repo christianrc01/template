@@ -27,7 +27,7 @@ export const ROUTE_TITLES: Record<RoutePaths, string> = {
   CONTACT: "Contact | Template app",
   PRIVACY: "Privacy Policy | Template app",
   USER: "User Profile | Template app",
-  // Add more routes as needed
+  // Add more titles as needed
 } as const;
 
 export const routes: RouteObject[] = [

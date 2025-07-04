@@ -5,6 +5,7 @@ import { ROUTE_PATHS } from "@/app/routes";
 function HomePage() {
   return (
     <div className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 flex flex-col items-center justify-center p-4 sm:p-6 md:p-12 w-full rounded-3xl">
+      {/* Example home page */}
       <section
         aria-labelledby="welcome-title"
         className="max-w-xl sm:max-w-2xl w-full bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sm:p-8 md:p-12 text-center mx-2 sm:mx-0"

@@ -17,7 +17,7 @@ vi.mock("@/features/users/controllers/usersController", () => ({
     getState: vi.fn(),
     subscribe: vi.fn(),
     loadUsers: vi.fn(),
-    getUserById: vi.fn(),
+    loadCurrentUser: vi.fn(),
     refresh: vi.fn(),
   },
 }));
@@ -34,6 +34,7 @@ describe("useUsers Hook", () => {
       >
     ).mockReturnValue({
       users: [],
+      currentUser: null,
       loading: false,
       error: null,
     });
@@ -56,9 +57,9 @@ describe("useUsers Hook", () => {
 
     expect(result.current).toEqual({
       users: [],
+      currentUser: null,
       loading: false,
       error: null,
-      getUser: expect.any(Function),
       refetch: expect.any(Function),
     });
   });
@@ -66,7 +67,6 @@ describe("useUsers Hook", () => {
   // 2. Initial load test
   it("should call loadUsers when empty and not loading", () => {
     renderHook(() => useUsers());
-
     expect(usersController.loadUsers).toHaveBeenCalledTimes(1);
   });
 
@@ -79,11 +79,13 @@ describe("useUsers Hook", () => {
     )
       .mockReturnValueOnce({
         users: [],
+        currentUser: null,
         loading: false,
         error: null,
       })
       .mockReturnValueOnce({
         users: mockUsers,
+        currentUser: mockUsers[0],
         loading: false,
         error: null,
       });
@@ -95,23 +97,23 @@ describe("useUsers Hook", () => {
     });
 
     expect(result.current.users).toEqual(mockUsers);
+    expect(result.current.currentUser).toEqual(mockUsers[0]);
   });
 
   // 4. Methods test
   it("should expose controller methods", () => {
     const { result } = renderHook(() => useUsers());
 
-    // Test de getUser
-    act(() => {
-      result.current.getUser(1);
-    });
-    expect(usersController.getUserById).toHaveBeenCalledWith(1);
-
     // Test de refetch
     act(() => {
       result.current.refetch();
     });
     expect(usersController.refresh).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call loadCurrentUser when userId is provided", () => {
+    renderHook(() => useUsers(1));
+    expect(usersController.loadCurrentUser).toHaveBeenCalledWith(1);
   });
 
   // 5. Cleanliness test
@@ -139,11 +141,13 @@ describe("useUsers Hook", () => {
     )
       .mockReturnValueOnce({
         users: [],
+        currentUser: null,
         loading: false,
         error: null,
       })
       .mockReturnValueOnce({
         users: [],
+        currentUser: null,
         loading: false,
         error: error,
       });
