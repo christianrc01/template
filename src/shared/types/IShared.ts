@@ -24,7 +24,7 @@ export interface TableLinkCellProps<T> extends GridCellProps {
   getText?: (dataItem: T) => string;
 }
 
-interface AccessiBeConfig {
+export interface AcsbInitConfig {
   language?: string;
   position?: "left" | "right";
   triggerIcon?: string;
@@ -34,10 +34,6 @@ interface AccessiBeConfig {
   triggerOffsetX?: number;
   triggerOffsetY?: number;
   triggerRadius?: string;
-}
-
-export interface AccessiBeProps {
-  config?: AccessiBeConfig;
 }
 
 export interface NotFoundProps {
