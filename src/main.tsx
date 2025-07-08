@@ -3,9 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "@/App";
 import "@progress/kendo-theme-default/dist/all.css";
 import "@/shared/styles/Index.css";
-import "@/shared/styles/KendoTable.css";
-import "@/shared/styles/KendoButton.css";
-import "@/shared/styles/KendoPopup.css";
 
 if (import.meta.env.DEV) {
   import("@axe-core/react").then(({ default: axe }) => {

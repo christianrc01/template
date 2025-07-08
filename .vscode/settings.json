@@ -1,0 +1,7 @@
+{
+  "cSpell.words": ["Accessi", "acsb", "Msal"],
+  "css.lint.unknownAtRules": "ignore",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.stylelint": "always"
+  }
+}

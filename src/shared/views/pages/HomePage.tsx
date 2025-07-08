@@ -24,7 +24,7 @@ function HomePage() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link to={ROUTE_PATHS.USERS} className="w-full sm:w-auto">
             <Button
-              variant="outline-white"
+              variant="decline"
               className="w-full"
               aria-label="View users"
             >

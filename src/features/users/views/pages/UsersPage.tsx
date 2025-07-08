@@ -36,7 +36,7 @@ function UsersPage() {
             <Button
               key={mode}
               onClick={() => setViewMode(mode)}
-              variant={viewMode === mode ? "primary" : "outline-white"}
+              variant={viewMode === mode ? "primary" : "secondary"}
               aria-pressed={viewMode === mode}
             >
               {mode === "cards" ? "Cards View" : "Table View"}

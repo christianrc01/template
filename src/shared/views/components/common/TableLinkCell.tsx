@@ -12,11 +12,7 @@ function TableLinkCell<T>({
 
   return (
     <td className={className}>
-      <Link
-        to={href}
-        key={href}
-        className="!text-blue-600 hover:!underline dark:!text-blue-400"
-      >
+      <Link to={href} key={href}>
         {text}
       </Link>
     </td>

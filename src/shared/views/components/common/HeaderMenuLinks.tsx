@@ -11,12 +11,7 @@ function HeaderMenuLinks({
   return (
     <Fragment>
       {links.map((link) => (
-        <Link
-          key={link.to}
-          to={link.to}
-          onClick={onLinkClick}
-          className="hover:underline hover:text-gray-300 dark:hover:text-gray-400"
-        >
+        <Link key={link.to} to={link.to} onClick={onLinkClick}>
           {link.label}
         </Link>
       ))}

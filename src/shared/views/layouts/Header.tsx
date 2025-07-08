@@ -32,7 +32,7 @@ function Header() {
   });
 
   return (
-    <header className="bg-gray-800 text-white dark:bg-gray-900 dark:border-b dark:border-gray-700 shadow-md">
+    <header className="bg-[var(--color-bg)] text-[var(--color-text)]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <Link to={ROUTE_PATHS.HOME} className="text-xl font-bold">
           Logo

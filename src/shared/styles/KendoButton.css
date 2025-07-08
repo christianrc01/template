@@ -1,24 +1,30 @@
-@import "tailwindcss";
-
 /* --- Base Kendo Button --- */
 .k-button {
-  @apply px-4 py-2 !rounded-full !font-medium transition-colors;
+  @apply py-2 px-3 text-sm font-bold font-[inherit] cursor-pointer;
+  @apply transition-all duration-250;
+  @apply focus:outline-1 focus:outline-[var(--color-text)];
+  @apply rounded-full px-4;
+  @apply hover:[opacity:0.9] dark:hover:[opacity:0.9];
+  @apply transition-opacity duration-200;
 }
 
 /* --- Custom variants --- */
-
 .k-button.k-button-primary {
-  @apply !bg-blue-500 !text-white hover:!bg-blue-600 dark:!bg-blue-600 dark:hover:!bg-blue-700;
+  @apply bg-[var(--color-green-100)] text-[var(--color-bg)];
+  @apply hover:border-[var(--color-green-100)];
 }
 
 .k-button.k-button-secondary {
-  @apply !bg-gray-500 !text-white hover:!bg-gray-600 dark:!bg-gray-600 dark:hover:!bg-gray-700;
+  @apply bg-[var(--color-teal-100)] text-[var(--color-bg)];
+  @apply hover:border-[var(--color-teal-100)];
 }
 
 .k-button.k-button-danger {
-  @apply !bg-red-600 !text-white hover:!bg-red-700 focus:!ring-red-500 dark:!bg-red-700 dark:hover:!bg-red-800 dark:focus:!ring-red-600;
+  @apply bg-[var(--color-red-100)] text-[var(--color-bg)];
+  @apply hover:border-[var(--color-red-100)];
 }
 
-.k-button.k-button-outline-white {
-  @apply !bg-gray-100 !border !border-white hover:!bg-white hover:!text-blue-600 dark:!border-gray-500 dark:!text-gray-600 dark:hover:!bg-gray-700 dark:hover:!text-white;
+.k-button.k-button-decline {
+  @apply bg-[var(--color-blue-100)] text-[var(--color-bg)];
+  @apply hover:border-[var(--color-blue-100)];
 }

@@ -17,10 +17,10 @@ describe("Button Component", () => {
 
     expect(button).toHaveClass("k-button-danger");
 
-    rerender(<Button variant="outline-white">Cancel</Button>);
+    rerender(<Button variant="decline">Cancel</Button>);
     const updatedButton = screen.getByRole("button", { name: "Cancel" });
 
-    expect(updatedButton).toHaveClass("k-button-outline-white");
+    expect(updatedButton).toHaveClass("k-button-decline");
   });
 
   it("merges custom classes without overriding variant class", () => {

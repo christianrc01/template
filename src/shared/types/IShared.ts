@@ -2,7 +2,7 @@ import type { HTMLAttributes, ReactNode, RefObject } from "react";
 import { type ButtonProps as KendoButtonProps } from "@progress/kendo-react-buttons";
 import type { GridCellProps } from "@progress/kendo-react-grid";
 
-type Variant = "primary" | "secondary" | "danger" | "outline-white";
+type Variant = "primary" | "secondary" | "danger" | "decline";
 
 export interface CustomButtonProps
   extends Omit<KendoButtonProps, "themeColor" | "fillMode">,

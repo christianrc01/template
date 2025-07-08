@@ -1,0 +1,129 @@
+@font-face {
+  font-family: Inter;
+  src: url("/public/fonts/Inter-VariableFont.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Apply base styles using theme variables */
+:root {
+  color-scheme: light dark;
+  font-family: var(--font-family);
+  line-height: 1.1875rem;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Styles for WebKit browsers (Chrome, Edge, Safari) */
+html::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+html::-webkit-scrollbar-track {
+  @apply bg-[var(--color-teal-10)];
+}
+
+html::-webkit-scrollbar-thumb {
+  @apply bg-[var(--color-blue-100)] rounded-2xl;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  @apply bg-[var(--color-blue-120)];
+}
+
+/* Styles for Firefox browsers (limited) */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-blue-100) var(--color-teal-10);
+}
+
+/* Styles for body */
+body {
+  font-size: var(--font-size);
+
+  @apply m-0 flex place-items-center min-h-screen;
+}
+
+/* Styles for links */
+a {
+  @apply font-medium text-[var(--color-link)] hover:text-[var(--color-green-100)];
+}
+
+/* Styles for titles */
+h1 {
+  @apply text-3xl leading-tight font-bold mb-4;
+}
+
+h2 {
+  @apply text-2xl leading-snug font-bold mb-3;
+}
+
+h3 {
+  @apply text-xl leading-normal font-bold mb-2;
+}
+
+h4 {
+  @apply text-lg leading-relaxed font-semibold mb-2;
+}
+
+h5 {
+  @apply text-base leading-relaxed font-semibold mb-1;
+}
+
+h6 {
+  @apply text-sm leading-loose font-medium mb-1;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Base colors */
+    --color-bg: var(--color-dark-bg);
+    --color-text: var(--color-dark-text);
+    --color-text-gray: var(--color-dark-text-gray);
+    --color-border: var(--color-dark-border);
+    --color-link: var(--color-dark-link);
+
+    /* Green palette */
+    --color-green-5: var(--color-dark-green-5);
+    --color-green-10: var(--color-dark-green-10);
+    --color-green-40: var(--color-dark-green-40);
+    --color-green-95: var(--color-dark-green-95);
+    --color-green-100: var(--color-dark-green-100);
+
+    /* Teal palette */
+    --color-teal-5: var(--color-dark-teal-5);
+    --color-teal-10: var(--color-dark-teal-10);
+    --color-teal-40: var(--color-dark-teal-40);
+    --color-teal-60: var(--color-dark-teal-60);
+    --color-teal-80: var(--color-dark-teal-80);
+    --color-teal-100: var(--color-dark-teal-100);
+
+    /* Blue palette */
+    --color-blue-5: var(--color-dark-blue-5);
+    --color-blue-10: var(--color-dark-blue-10);
+    --color-blue-20: var(--color-dark-blue-20);
+    --color-blue-100: var(--color-dark-blue-100);
+    --color-blue-120: var(--color-dark-blue-120);
+
+    /* Red palette */
+    --color-red-5: var(--color-dark-red-5);
+    --color-red-10: var(--color-dark-red-10);
+    --color-red-20: var(--color-dark-red-20);
+    --color-red-100: var(--color-dark-red-100);
+    --color-red-120: var(--color-dark-red-120);
+
+    /* Other colors */
+    --color-orange-100: var(--color-dark-orange-100);
+
+    /* Shadows */
+    --shadow-1: var(--dark-shadow-1);
+    --shadow-2: var(--dark-shadow-2);
+  }
+}

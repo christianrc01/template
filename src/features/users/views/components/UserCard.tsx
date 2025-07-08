@@ -42,7 +42,7 @@ function UserCard({ user }: UserProps) {
                   href={`https://${user.website}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-blue-500 dark:hover:text-blue-400 hover:underline"
+                  className="hover:underline"
                 >
                   {user.website}
                 </a>
