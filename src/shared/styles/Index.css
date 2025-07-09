@@ -2,5 +2,6 @@
 @import "./Theme.css";
 @import "./Base.css";
 @import "./KendoButton.css";
+@import "./KendoLoader.css";
 @import "./KendoPopup.css";
 @import "./KendoTable.css";

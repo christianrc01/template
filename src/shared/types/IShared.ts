@@ -53,3 +53,8 @@ export interface HeaderMenuLinksProps {
   onLogout: () => void;
   onLinkClick?: () => void;
 }
+
+export interface IconCardProps {
+  icon: ReactNode;
+  name: string;
+}

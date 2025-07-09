@@ -34,7 +34,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 html::-webkit-scrollbar-thumb:hover {
-  @apply bg-[var(--color-blue-120)];
+  @apply bg-[var(--color-blue-alt)];
 }
 
 /* Styles for Firefox browsers (limited) */
@@ -78,52 +78,4 @@ h5 {
 
 h6 {
   @apply text-sm leading-loose font-medium mb-1;
-}
-
-/* Dark mode styles */
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Base colors */
-    --color-bg: var(--color-dark-bg);
-    --color-text: var(--color-dark-text);
-    --color-text-gray: var(--color-dark-text-gray);
-    --color-border: var(--color-dark-border);
-    --color-link: var(--color-dark-link);
-
-    /* Green palette */
-    --color-green-5: var(--color-dark-green-5);
-    --color-green-10: var(--color-dark-green-10);
-    --color-green-40: var(--color-dark-green-40);
-    --color-green-95: var(--color-dark-green-95);
-    --color-green-100: var(--color-dark-green-100);
-
-    /* Teal palette */
-    --color-teal-5: var(--color-dark-teal-5);
-    --color-teal-10: var(--color-dark-teal-10);
-    --color-teal-40: var(--color-dark-teal-40);
-    --color-teal-60: var(--color-dark-teal-60);
-    --color-teal-80: var(--color-dark-teal-80);
-    --color-teal-100: var(--color-dark-teal-100);
-
-    /* Blue palette */
-    --color-blue-5: var(--color-dark-blue-5);
-    --color-blue-10: var(--color-dark-blue-10);
-    --color-blue-20: var(--color-dark-blue-20);
-    --color-blue-100: var(--color-dark-blue-100);
-    --color-blue-120: var(--color-dark-blue-120);
-
-    /* Red palette */
-    --color-red-5: var(--color-dark-red-5);
-    --color-red-10: var(--color-dark-red-10);
-    --color-red-20: var(--color-dark-red-20);
-    --color-red-100: var(--color-dark-red-100);
-    --color-red-120: var(--color-dark-red-120);
-
-    /* Other colors */
-    --color-orange-100: var(--color-dark-orange-100);
-
-    /* Shadows */
-    --shadow-1: var(--dark-shadow-1);
-    --shadow-2: var(--dark-shadow-2);
-  }
 }

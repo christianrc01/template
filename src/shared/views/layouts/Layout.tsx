@@ -8,7 +8,7 @@ import type { IWrapperProps } from "@/shared/types/IError";
 
 function Layout({ children }: IWrapperProps): ReactElement {
   return (
-    <div className="min-h-screen w-screen flex flex-col bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen w-screen flex flex-col bg-[var(--color-bg)]">
       <Header />
       <TrackPageView />
       <DocumentTitle />

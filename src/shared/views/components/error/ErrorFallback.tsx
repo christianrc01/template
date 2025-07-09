@@ -7,12 +7,12 @@ function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (
     <div
       role="alert"
-      className="fixed inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-900"
+      className="fixed inset-0 flex items-center justify-center bg-[var(--color-bg)]"
     >
       <article
         aria-labelledby="error-fallback-title"
         aria-describedby="error-fallback-details"
-        className="p-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border-l-4 border-red-500 dark:border-red-400 max-w-lg w-full mx-4"
+        className="p-6 bg-[var(--color-bg)] rounded-xl shadow-lg border-l-4 border-red-500 dark:border-red-400 max-w-lg w-full mx-4"
       >
         <div className="flex items-start">
           <div className="flex-shrink-0 mt-0.5 text-red-500 dark:text-red-400">

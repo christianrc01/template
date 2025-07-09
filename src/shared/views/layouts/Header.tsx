@@ -32,9 +32,13 @@ function Header() {
   });
 
   return (
-    <header className="bg-[var(--color-bg)] text-[var(--color-text)]">
+    <header className="bg-[var(--color-bg)] text-[var(--color-text-primary)]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to={ROUTE_PATHS.HOME} className="text-xl font-bold">
+        <Link
+          to={ROUTE_PATHS.HOME}
+          draggable={false}
+          className="text-xl font-bold"
+        >
           Logo
         </Link>
 
@@ -42,7 +46,7 @@ function Header() {
           <HeaderMenuLinks links={mainLinks} onLogout={handleLogout} />
         </nav>
 
-        <div ref={menuAnchorRef} className="sm:!hidden inline-block">
+        <div ref={menuAnchorRef} className="sm:hidden inline-block">
           <Button
             aria-label="Toggle menu"
             variant="secondary"
@@ -56,20 +60,17 @@ function Header() {
       <Popup
         anchor={menuAnchorRef.current}
         show={isMenuOpen}
-        popupAlign={{ horizontal: "right", vertical: "bottom" }}
-        anchorAlign={{ horizontal: "right", vertical: "top" }}
-        className="mt-2 !bg-gray-800 dark:!bg-gray-900 border border-gray-700 !rounded-2xl !shadow-md p-4"
+        ref={(ref) => {
+          if (ref && popupRef.current) {
+            popupRef.current = ref.element;
+          }
+        }}
       >
-        <div
-          ref={popupRef}
-          className="!bg-gray-800 dark:!bg-gray-900 flex flex-col gap-2 min-w-[140px] text-center"
-        >
-          <HeaderMenuLinks
-            links={mainLinks}
-            onLogout={handleLogout}
-            onLinkClick={() => setIsMenuOpen(false)}
-          />
-        </div>
+        <HeaderMenuLinks
+          links={mainLinks}
+          onLogout={handleLogout}
+          onLinkClick={() => setIsMenuOpen(false)}
+        />
       </Popup>
     </header>
   );

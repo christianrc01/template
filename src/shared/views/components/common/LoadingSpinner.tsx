@@ -8,16 +8,9 @@ function LoadingSpinner() {
       aria-label="Loading..."
       data-testid="spinner"
     >
-      <Loader
-        size="large"
-        type="infinite-spinner"
-        themeColor="secondary"
-        aria-hidden="true"
-      />
+      <Loader size="large" type="infinite-spinner" aria-hidden="true" />
     </div>
   );
 }
 
 export default LoadingSpinner;
-
-

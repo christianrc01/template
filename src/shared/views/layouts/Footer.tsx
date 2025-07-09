@@ -9,7 +9,7 @@ function Footer() {
   ];
 
   return (
-    <footer className="bg-[var(--color-bg)] text-[var(--color-text)] py-6">
+    <footer className="bg-[var(--color-bg)] text-[var(--color-text-primary)] py-6">
       <div className="container mx-auto px-4 text-center flex flex-col items-center gap-2">
         <p className="text-sm sm:text-base">
           ©{new Date().getFullYear()} All rights reserved
@@ -17,7 +17,9 @@ function Footer() {
         <ul className="flex flex-wrap justify-center gap-4 text-sm sm:text-base">
           {footerLinks.map((link) => (
             <li key={link.path}>
-              <Link to={link.path}>{link.label}</Link>
+              <Link to={link.path} draggable={false}>
+                {link.label}
+              </Link>
             </li>
           ))}
         </ul>

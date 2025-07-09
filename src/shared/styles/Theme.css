@@ -3,82 +3,85 @@
   --font-size: 0.9375rem;
 
   /* COLORS BASE */
-  --color-neutral-0: #000;
-  --color-neutral-10: #f3f3f3;
-  --color-neutral-60: #53575a;
-  --color-neutral-90: #1a1a1a;
-  --color-neutral-95: #2d2d2d;
-  --color-neutral-100: #fff;
+  --color-black: #000;
+  --color-white: #fff;
+  --color-error: #b73241;
+  --color-neutral: #f3f3f3;
+  --color-charcoal: #53575a;
 
   /* LIGHT MODE COLORS */
-  --color-bg: var(--color-neutral-100);
-  --color-text: var(--color-neutral-0);
-  --color-text-gray: var(--color-neutral-60);
-  --color-border: var(--color-neutral-10);
-  --color-link: var(--color-neutral-0);
+  --color-bg: var(--color-white);
+  --color-text-primary: var(--color-black);
+  --color-text-secondary: var(--color-charcoal);
+  --color-border: var(--color-neutral);
+  --color-link: var(--color-black);
 
-  /* COLOR PALETTE (light) */
+  /* COLOR PALETTE (green scale) */
   --color-green-5: #f6f9f2;
-  --color-green-10: #e8f2e1;
+  --color-green-10: #eff5e7;
+  --color-green-20: #e0ecd1;
   --color-green-40: #c2dba4;
-  --color-green-95: #61a730;
+  --color-green-60: #a3c978;
+  --color-green-80: #83b84b;
   --color-green-100: #61a60e;
+
+  /* GREEN VARIANTS */
+  --color-green-alt: #61a730;
+
+  /* COLOR PALETTE (charcoal scale) */
+  --color-charcoal-5: #f4f5f5;
+  --color-charcoal-10: #ebebec;
+  --color-charcoal-20: #d9dadb;
+  --color-charcoal-40: #b6b7b9;
+  --color-charcoal-60: #949698;
+  --color-charcoal-80: #737678;
+  --color-charcoal-100: var(--color-charcoal);
+
+  /* COLOR PALETTE (teal scale) */
   --color-teal-5: #f1f7f7;
   --color-teal-10: #e5eff1;
+  --color-teal-20: #cce2e4;
   --color-teal-40: #9bc6ca;
   --color-teal-60: #66aab1;
   --color-teal-80: #228f99;
   --color-teal-100: #007481;
+
+  /* COLOR PALETTE (blue scale) */
   --color-blue-5: #f4fafd;
   --color-blue-10: #eaf6fb;
   --color-blue-20: #d6eff9;
+  --color-blue-40: #ace0f3;
+  --color-blue-60: #7cd1ee;
+  --color-blue-80: #38c2e8;
   --color-blue-100: #00b2e3;
-  --color-blue-120: #535bf2;
-  --color-red-5: #fef2f2;
-  --color-red-10: #fee2e2;
-  --color-red-40: #fca5a5;
-  --color-red-80: #ef4444;
-  --color-red-100: #dc2626;
+
+  /* BLUE VARIANTS */
+  --color-blue-alt: #535bf2;
+
+  /* COLOR PALETTE (red scale) */
+  --color-red-5: #fff5f4;
+  --color-red-10: #ffeceb;
+  --color-red-20: #ffdbd9;
+  --color-red-40: #feb7b5;
+  --color-red-60: #f89392;
+  --color-red-80: #f06c71;
+  --color-red-100: #e53e51;
+
+  /* COLOR PALETTE (orange) */
   --color-orange-100: #e87b31;
 
   /* SHADOWS (light) */
   --shadow-1: 0rem 0.25rem 0.5rem 0rem rgb(0 0 0 / 0.04);
   --shadow-2: 0rem 0.25rem 1.25rem 0rem rgb(0 0 0 / 0.1);
 
-  /* DARK MODE COLORS */
-  --color-dark-bg: #1a1a1a;
-  --color-dark-text: #f5f5f5;
-  --color-dark-text-gray: #a3a3a3;
-  --color-dark-border: #2d2d2d;
-  --color-dark-link: #d1d5db;
+  /* GRADIENTS (light) */
+  --gradient-primary: linear-gradient(
+    to bottom right,
+    var(--color-blue-5),
+    var(--color-blue-40)
+  );
 
-  /* COLOR PALETTE (dark) */
-  --color-dark-green-5: #1a2a15;
-  --color-dark-green-10: #23381d;
-  --color-dark-green-40: #4a6b32;
-  --color-dark-green-95: #7cc229;
-  --color-dark-green-100: #7cc229;
-  --color-dark-teal-5: #152728;
-  --color-dark-teal-10: #1d3638;
-  --color-dark-teal-40: #3a6a6e;
-  --color-dark-teal-60: #3d8e95;
-  --color-dark-teal-80: #2bb8c5;
-  --color-dark-teal-100: #00c8d8;
-  --color-dark-blue-5: #152a33;
-  --color-dark-blue-10: #1d3d4a;
-  --color-dark-blue-20: #2a5c6e;
-  --color-dark-blue-100: #00d4ff;
-  --color-dark-blue-120: #a5b4fc;
-  --color-dark-red-5: #2a0a0a;
-  --color-dark-red-10: #431515;
-  --color-dark-red-40: #7f1d1d;
-  --color-dark-red-80: #ef4444;
-  --color-dark-red-100: #f87171;
-  --color-dark-orange-100: #ff8c42;
-
-  /* SHADOWS (dark) */
-  --dark-shadow-1: 0rem 0.25rem 0.5rem 0rem rgb(0 0 0 / 0.2);
-  --dark-shadow-2: 0rem 0.25rem 1.25rem 0rem rgb(0 0 0 / 0.3);
+  --gradient-secondary: linear-gradient(to bottom right, #f0f9ff, #c7d2fe);
 
   /* SPACING SYSTEM (rem units) */
   --space-0: 0;
@@ -109,4 +112,84 @@
   --radius-md: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
+}
+
+/* Dark mode redefinitions */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Contextual colors */
+    --color-bg: #1a1a1a;
+    --color-text-primary: #f5f5f5;
+    --color-text-secondary: #a3a3a3;
+    --color-border: #2d2d2d;
+    --color-link: #d1d5db;
+    --color-error: #e53e51;
+
+    /* Color palette adjustments for dark mode (green scale) */
+    --color-green-5: #1a2a15;
+    --color-green-10: #23381d;
+    --color-green-20: #2e4a24;
+    --color-green-40: #4a6b32;
+    --color-green-60: #5d8a3d;
+    --color-green-80: #7cc229;
+    --color-green-100: #8dd63d;
+
+    /* Dark variants (green) */
+    --color-green-alt: #7cc23a;
+
+    /* Dark (charcoal scale) */
+    --color-charcoal-5: #1a1a1a;
+    --color-charcoal-10: #2d2d2d;
+    --color-charcoal-20: #404040;
+    --color-charcoal-40: #666;
+    --color-charcoal-60: #8c8c8c;
+    --color-charcoal-80: #b3b3b3;
+    --color-charcoal-100: #d9d9d9;
+
+    /* Dark (teal scale) */
+    --color-teal-5: #152728;
+    --color-teal-10: #1d3638;
+    --color-teal-20: #2a4a4d;
+    --color-teal-40: #3a6a6e;
+    --color-teal-60: #3d8e95;
+    --color-teal-80: #2bb8c5;
+    --color-teal-100: #00c8d8;
+
+    /* Dark (blue scale) */
+    --color-blue-5: #152a33;
+    --color-blue-10: #1d3d4a;
+    --color-blue-20: #2a5c6e;
+    --color-blue-40: #3a7d97;
+    --color-blue-60: #4da6c2;
+    --color-blue-80: #5dc7e8;
+    --color-blue-100: #00d4ff;
+
+    /* Dark variants (blue) */
+    --color-blue-alt: #6a72f5;
+
+    /* Dark (red scale) */
+    --color-red-5: #2a0a0a;
+    --color-red-10: #431515;
+    --color-red-20: #5c2323;
+    --color-red-40: #7f1d1d;
+    --color-red-60: #b91c1c;
+    --color-red-80: #ef4444;
+    --color-red-100: #f87171;
+
+    /* Dark (orange scale) */
+    --color-orange-100: #ff8c42;
+
+    /* Shadows for dark mode */
+    --shadow-1: 0rem 0.25rem 0.5rem 0rem rgb(0 0 0 / 0.2);
+    --shadow-2: 0rem 0.25rem 1.25rem 0rem rgb(0 0 0 / 0.3);
+
+    /* Gradients for dark mode */
+    --gradient-primary: linear-gradient(
+      to bottom right,
+      var(--color-charcoal-5),
+      var(--color-charcoal-20)
+    );
+
+    --gradient-secondary: linear-gradient(to bottom right, #1e293b, #0f172a);
+  }
 }

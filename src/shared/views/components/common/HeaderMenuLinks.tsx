@@ -11,7 +11,12 @@ function HeaderMenuLinks({
   return (
     <Fragment>
       {links.map((link) => (
-        <Link key={link.to} to={link.to} onClick={onLinkClick}>
+        <Link
+          key={link.to}
+          to={link.to}
+          onClick={onLinkClick}
+          draggable={false}
+        >
           {link.label}
         </Link>
       ))}

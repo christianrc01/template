@@ -2,7 +2,7 @@
 .k-button {
   @apply py-2 px-3 text-sm font-bold font-[inherit] cursor-pointer;
   @apply transition-all duration-250;
-  @apply focus:outline-1 focus:outline-[var(--color-text)];
+  @apply focus:outline-1 focus:outline-[var(--color-text-primary)];
   @apply rounded-full px-4;
   @apply hover:[opacity:0.9] dark:hover:[opacity:0.9];
   @apply transition-opacity duration-200;
@@ -20,8 +20,8 @@
 }
 
 .k-button.k-button-danger {
-  @apply bg-[var(--color-red-100)] text-[var(--color-bg)];
-  @apply hover:border-[var(--color-red-100)];
+  @apply bg-[var(--color-error)] text-[var(--color-bg)];
+  @apply hover:border-[var(--color-error)];
 }
 
 .k-button.k-button-decline {

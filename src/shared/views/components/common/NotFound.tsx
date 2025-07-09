@@ -9,19 +9,19 @@ function NotFound({
   backLabel = "Go back home",
 }: NotFoundProps) {
   return (
-    <div className="grid place-items-center w-full bg-gray-50 dark:bg-gray-900 min-h-[50vh] px-4">
+    <div className="grid place-items-center w-full bg-[var(--color-bg)] min-h-[50vh] px-4">
       <section
         aria-labelledby="not-found-title"
         className="text-center max-w-lg"
       >
         <h1
           id="not-found-title"
-          className="text-4xl font-bold text-gray-800 dark:text-gray-200 mb-4"
+          className="text-[var(--color-text-primary)] mb-4"
         >
           {title}
         </h1>
-        <p className="text-gray-600 dark:text-gray-400 mb-6">{message}</p>
-        <Link to={backTo}>
+        <p className="text-[var(--color-text-secondary)] mb-6">{message}</p>
+        <Link to={backTo} draggable={false}>
           <Button variant="primary">{backLabel}</Button>
         </Link>
       </section>

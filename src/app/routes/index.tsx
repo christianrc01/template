@@ -5,6 +5,7 @@ import UsersPage from "@/features/users/views/pages/UsersPage";
 import Layout from "@/shared/views/layouts/Layout";
 import { ErrorBoundary } from "@/shared/components/ErrorBoundary";
 import UserProfilePage from "@/features/users/views/pages/UserProfilePage";
+import IconPage from "@/shared/views/pages/IconPage";
 
 export const ROUTE_PATHS = {
   HOME: "/",
@@ -14,6 +15,7 @@ export const ROUTE_PATHS = {
   CONTACT: "/contact",
   PRIVACY: "/privacy",
   USER: "/user/:id",
+  ICON: "/icon",
   // Add more routes as needed
 } as const;
 
@@ -27,6 +29,7 @@ export const ROUTE_TITLES: Record<RoutePaths, string> = {
   CONTACT: "Contact | Template app",
   PRIVACY: "Privacy Policy | Template app",
   USER: "User Profile | Template app",
+  ICON: "Icon | Template app",
   // Add more titles as needed
 } as const;
 
@@ -50,6 +53,10 @@ export const routes: RouteObject[] = [
       {
         path: ROUTE_PATHS.USER.substring(1),
         element: <UserProfilePage />,
+      },
+      {
+        path: ROUTE_PATHS.ICON.substring(1),
+        element: <IconPage />,
       },
       {
         path: "*",

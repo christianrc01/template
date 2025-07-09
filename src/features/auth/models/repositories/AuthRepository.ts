@@ -1,5 +1,5 @@
 import { authService } from "@/features/auth/models/services/authService";
-import type { SerializableAccountInfo } from "../../types/IAuth";
+import type { SerializableAccountInfo } from "@/features/auth/types/IAuth";
 
 class AuthRepository {
   async getAccountInfo(): Promise<SerializableAccountInfo | null> {

@@ -1,0 +1,4 @@
+/* --- Base Kendo Loader --- */
+.k-loader {
+  @apply text-[var(--color-blue-100)];
+}

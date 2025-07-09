@@ -1,3 +1,4 @@
+/* --- Base Kendo Popup --- */
 .k-popup {
-  @apply border-none;
+  @apply bg-[var(--color-bg)] border border-[var(--color-text-primary)] rounded-2xl text-center gap-2 mt-2 p-4;
 }

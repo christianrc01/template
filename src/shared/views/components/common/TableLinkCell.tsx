@@ -12,7 +12,7 @@ function TableLinkCell<T>({
 
   return (
     <td className={className}>
-      <Link to={href} key={href}>
+      <Link to={href} key={href} draggable={false}>
         {text}
       </Link>
     </td>

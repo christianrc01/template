@@ -1,8 +1,9 @@
 import IconMail from "@/shared/icons/IconMail";
-import IconPhone from "@/shared/icons/IconPhone";
+import IconPeople from "@/shared/icons/IconPeople";
 import type { UserProps } from "@/features/users/types/IUser";
 import ContactItem from "@/features/users/views/components/ContactItem";
 import { responsiveIconSize } from "@/lib/config/tailwind";
+import IconLink from "@/shared/icons/IconLink";
 
 function UserCard({ user }: UserProps) {
   return (
@@ -29,17 +30,18 @@ function UserCard({ user }: UserProps) {
             />
             <ContactItem
               icon={
-                <IconPhone aria-hidden="true" className={responsiveIconSize} />
+                <IconPeople aria-hidden="true" className={responsiveIconSize} />
               }
               text={user.phone}
             />
             <ContactItem
               icon={
-                <IconPhone aria-hidden="true" className={responsiveIconSize} />
+                <IconLink aria-hidden="true" className={responsiveIconSize} />
               }
               text={
                 <a
                   href={`https://${user.website}`}
+                  draggable={false}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:underline"

@@ -1,3 +1,4 @@
+/* --- Base Kendo Table --- */
 .k-grid-pager {
   @apply !bg-white dark:!bg-gray-700 rounded-b-2xl;
 }
