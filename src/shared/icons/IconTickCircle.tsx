@@ -1,0 +1,34 @@
+import { type SVGProps } from "react";
+
+function IconTickCircle({
+  fill = "none",
+  stroke = "currentColor",
+  className = "w-6 h-6",
+  ...props
+}: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 64 64"
+      fill={fill}
+      className={className}
+      {...props}
+    >
+      <path
+        d="M32.0002 58.6667C46.6668 58.6667 58.6668 46.6667 58.6668 32C58.6668 17.3333 46.6668 5.33334 32.0002 5.33334C17.3335 5.33334 5.3335 17.3333 5.3335 32C5.3335 46.6667 17.3335 58.6667 32.0002 58.6667Z"
+        stroke={stroke}
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path
+        d="M20.6665 32L28.2132 39.5467L43.3332 24.4533"
+        stroke={stroke}
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+export default IconTickCircle;
