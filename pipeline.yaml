@@ -1,0 +1,95 @@
+trigger:
+  - UI-71
+
+pool:
+  vmImage: "windows-latest"
+
+variables:
+  projectFolder: "."
+  buildOutputFolder: "dist"
+
+steps:
+  # Install Node.js v22
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "22.x"
+    displayName: "Install Node.js"
+
+  # Install pnpm
+  - script: |
+      npm install -g pnpm
+    displayName: "Install pnpm"
+
+  # node_modules cache
+  - task: Cache@2
+    inputs:
+      key: 'pnpm | "$(Agent.OS)" | pnpm-lock.yaml'
+      restoreKeys: |
+        pnpm | "$(Agent.OS)"
+      path: $(projectFolder)/node_modules
+    displayName: "Cache node_modules"
+
+  # Install dependencies
+  - script: |
+      pnpm install
+    displayName: "Install dependencies"
+
+  # Validate lint
+  - script: |
+      pnpm lint
+    displayName: "Run Lint"
+    continueOnError: true
+
+  # Run tests
+  - script: |
+      pnpm test
+    displayName: "Run Tests"
+    continueOnError: true
+
+  # Download secure .env.production file 
+  - task: DownloadSecureFile@1
+    name: DownloadEnvFile
+    inputs:
+      secureFile: ".env.production"
+
+  # Rename the .env.production file to .env
+  - script: |
+      cp $(DownloadEnvFile.secureFilePath) .env
+    displayName: "Rename env file"
+
+  # Build
+  - script: |
+      pnpm build
+    displayName: "Build App"
+
+  # Download web.config file
+  - task: DownloadSecureFile@1
+    name: DownloadWebConfig
+    inputs:
+      secureFile: "web.config"
+
+  # Copy web.config to the build folder
+  - script: |
+      cp $(DownloadWebConfig.secureFilePath) $(buildOutputFolder)/web.config
+    displayName: "Copy web.config to output folder"
+
+  # Copy files to staging folder
+  - task: CopyFiles@2
+    inputs:
+      sourceFolder: "$(buildOutputFolder)"
+      contents: "**/*"
+      targetFolder: "$(Build.ArtifactStagingDirectory)"
+      cleanTargetFolder: true
+
+  # Create zip file
+  - task: ArchiveFiles@2
+    inputs:
+      rootFolderOrFile: "$(Build.ArtifactStagingDirectory)"
+      archiveType: "zip"
+      archiveFile: "$(Build.ArtifactStagingDirectory)/react-ui-$(Build.BuildId).zip"
+      includeRootFolder: false
+
+  # Publish artifact
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: "$(Build.ArtifactStagingDirectory)/react-ui-$(Build.BuildId).zip"

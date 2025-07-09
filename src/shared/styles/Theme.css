@@ -80,7 +80,6 @@
     var(--color-blue-5),
     var(--color-blue-40)
   );
-
   --gradient-secondary: linear-gradient(to bottom right, #f0f9ff, #c7d2fe);
 
   /* SPACING SYSTEM (rem units) */
@@ -189,7 +188,6 @@
       var(--color-charcoal-5),
       var(--color-charcoal-20)
     );
-
     --gradient-secondary: linear-gradient(to bottom right, #1e293b, #0f172a);
   }
 }
