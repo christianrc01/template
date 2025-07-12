@@ -1,0 +1,46 @@
+/* --- Base Text Styles --- */
+.k-text {
+  @apply break-words;
+}
+
+/* --- Paragraph / Span / Small --- */
+.k-text-p {
+  @apply text-[var(--font-size-15)] leading-[var(--line-height-base)];
+  @apply text-[var(--color-text-secondary)] font-normal;
+}
+
+.k-text-span {
+  @apply leading-[var(--line-height-base)];
+}
+
+.k-text-small {
+  @apply text-xs leading-[var(--line-height-13)];
+  @apply text-[var(--color-text-secondary)] font-normal;
+}
+
+/* --- Titles --- */
+.k-text-h1 {
+  @apply text-[var(--color-text-primary)] font-normal;
+  @apply text-2xl sm:text-3xl;
+  @apply leading-[var(--line-height-34)];
+  @apply tracking-[var(--letter-spacing-base)];
+}
+
+.k-text-h2 {
+  @apply text-[var(--color-text-primary)] font-normal;
+  @apply text-xl sm:text-2xl;
+  @apply leading-[var(--line-height-25)];
+  @apply tracking-[var(--letter-spacing-h2)];
+}
+
+.k-text-h3 {
+  @apply text-[var(--color-text-primary)] font-normal;
+  @apply text-[var(--font-size-17)] leading-6;
+}
+
+.k-text-h4 {
+  @apply text-base font-normal;
+  @apply text-[var(--color-text-secondary)];
+  @apply leading-[var(--line-height-base)];
+  @apply tracking-[var(--letter-spacing-h3)];
+}

@@ -21,12 +21,7 @@ function UsersPage() {
   return (
     <article className="w-full text-center" aria-labelledby="user-page-title">
       <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 text-center sm:text-left">
-        <h1
-          id="user-page-title"
-          className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-200"
-        >
-          Users
-        </h1>
+        <h1 id="user-page-title">Users</h1>
         <div
           className="flex justify-center sm:justify-end flex-wrap gap-2"
           role="group"

@@ -1,3 +1,4 @@
+import fs from "fs";
 import path from "path";
 import { defineConfig, loadEnv } from "vite";
 import tailwindcss from "@tailwindcss/vite";
@@ -8,6 +9,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
 
   return {
+    base: "./",
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -16,6 +18,10 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       proxy: getProxyRules(env.VITE_API_BASE_URL),
+      https: {
+        key: fs.readFileSync("./certificate/localhost-key.pem"),
+        cert: fs.readFileSync("./certificate/localhost.pem"),
+      },
     },
     build: {
       outDir: "dist",

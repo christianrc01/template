@@ -14,13 +14,10 @@ function NotFound({
         aria-labelledby="not-found-title"
         className="text-center max-w-lg"
       >
-        <h1
-          id="not-found-title"
-          className="text-[var(--color-text-primary)] mb-4"
-        >
-          {title}
-        </h1>
-        <p className="text-[var(--color-text-secondary)] mb-6">{message}</p>
+        <div className="mb-6">
+          <h2 id="not-found-title">{title}</h2>
+          <p className="mt-1">{message}</p>
+        </div>
         <Link to={backTo} draggable={false}>
           <Button variant="primary">{backLabel}</Button>
         </Link>

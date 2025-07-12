@@ -1,7 +1,7 @@
 import IconInfo from "@/shared/icons/IconInfo";
 import Button from "@/shared/views/components/common/Button";
 import type { IErrorFallbackProps } from "@/shared/types/IError";
-import { responsiveIconSize } from "@/lib/config/tailwind";
+import Icon from "@/shared/views/components/common/Icon";
 
 function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
   return (
@@ -16,15 +16,10 @@ function ErrorFallback({ error, onReset }: IErrorFallbackProps) {
       >
         <div className="flex items-start">
           <div className="flex-shrink-0 mt-0.5 text-red-500 dark:text-red-400">
-            <IconInfo aria-hidden="true" className={responsiveIconSize} />
+            <Icon icon={IconInfo} />
           </div>
           <div className="ml-4">
-            <h2
-              id="error-fallback-title"
-              className="text-lg font-bold text-gray-900 dark:text-white"
-            >
-              Something went wrong!
-            </h2>
+            <h2 id="error-fallback-title">Something went wrong!</h2>
             <details className="mt-3">
               <summary className="text-sm font-medium text-gray-700 dark:text-gray-300 cursor-pointer hover:text-gray-900 dark:hover:text-gray-100">
                 Error details

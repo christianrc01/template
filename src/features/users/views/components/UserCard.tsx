@@ -2,8 +2,8 @@ import IconMail from "@/shared/icons/IconMail";
 import IconPeople from "@/shared/icons/IconPeople";
 import type { UserProps } from "@/features/users/types/IUser";
 import ContactItem from "@/features/users/views/components/ContactItem";
-import { responsiveIconSize } from "@/lib/config/tailwind";
 import IconLink from "@/shared/icons/IconLink";
+import Icon from "@/shared/views/components/common/Icon";
 
 function UserCard({ user }: UserProps) {
   return (
@@ -13,31 +13,14 @@ function UserCard({ user }: UserProps) {
     >
       <div className="flex flex-col sm:flex-row sm:items-start sm:space-x-4 space-y-4 sm:space-y-0">
         <div className="flex-1">
-          <h3
-            id={`user-${user.id}-name`}
-            className="text-xl font-bold text-gray-800 dark:text-gray-100"
-          >
-            {user.name}
-          </h3>
+          <h3 id={`user-${user.id}-name`}>{user.name}</h3>
           <p className="text-gray-500 dark:text-gray-400">@{user.username}</p>
 
           <div className="mt-4 space-y-2">
+            <ContactItem icon={<Icon icon={IconMail} />} text={user.email} />
+            <ContactItem icon={<Icon icon={IconPeople} />} text={user.phone} />
             <ContactItem
-              icon={
-                <IconMail aria-hidden="true" className={responsiveIconSize} />
-              }
-              text={user.email}
-            />
-            <ContactItem
-              icon={
-                <IconPeople aria-hidden="true" className={responsiveIconSize} />
-              }
-              text={user.phone}
-            />
-            <ContactItem
-              icon={
-                <IconLink aria-hidden="true" className={responsiveIconSize} />
-              }
+              icon={<Icon icon={IconLink} />}
               text={
                 <a
                   href={`https://${user.website}`}
@@ -53,9 +36,7 @@ function UserCard({ user }: UserProps) {
           </div>
 
           <address className="mt-4 p-3 bg-gray-50 dark:bg-gray-700 rounded-2xl">
-            <h4 className="font-medium text-gray-700 dark:text-gray-300">
-              Address
-            </h4>
+            <h4>Address</h4>
             <p className="text-gray-600 dark:text-gray-400">
               {user.address.street}, {user.address.suite}
               <br />
@@ -67,9 +48,7 @@ function UserCard({ user }: UserProps) {
           </address>
 
           <div className="mt-3 p-3 bg-gray-50 dark:bg-gray-700 rounded-2xl">
-            <h4 className="font-medium text-gray-700 dark:text-gray-300">
-              Company
-            </h4>
+            <h4>Company</h4>
             <p className="text-gray-800 dark:text-gray-200 font-medium">
               {user.company.name}
             </p>

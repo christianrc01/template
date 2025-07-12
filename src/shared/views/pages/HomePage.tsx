@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
 import Button from "@/shared/views/components/common/Button";
 import { ROUTE_PATHS } from "@/app/routes";
+import Text from "@/shared/views/components/common/Text";
+import Link from "@/shared/views/components/common/Link";
 
 function HomePage() {
   return (
@@ -10,16 +11,12 @@ function HomePage() {
         aria-labelledby="welcome-title"
         className="max-w-xl sm:max-w-2xl w-full bg-[var(--color-bg)] rounded-xl shadow-lg p-6 sm:p-8 md:p-12 text-center mx-2 sm:mx-0"
       >
-        <h1
-          id="welcome-title"
-          className="!text-3xl sm:!text-4xl md:!text-5xl font-bold text-[var(--color-text-primary)] mb-4 break-words"
-        >
-          Welcome
-        </h1>
-
-        <p className="text-base sm:text-lg md:text-xl text-[var(--color-text-secondary)] mb-8">
-          Browse and manage all registered users
-        </p>
+        <div className="mb-8">
+          <Text as="h1" id="welcome-title">
+            Welcome
+          </Text>
+          <Text as="p">Browse and manage all registered users</Text>
+        </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
@@ -38,9 +35,12 @@ function HomePage() {
         </div>
 
         <footer className="mt-8 pt-6 border-t border-[var(--color-border)]">
-          <p className="text-sm sm:text-base text-[var(--color-text-secondary)]">
-            Last login: {new Date().toLocaleDateString()}
-          </p>
+          <Text as="small">
+            Last login:{" "}
+            <time dateTime={new Date().toISOString()}>
+              {new Date().toLocaleDateString()}
+            </time>
+          </Text>
         </footer>
       </section>
     </div>

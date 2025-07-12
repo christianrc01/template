@@ -1,14 +1,14 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "@/shared/views/components/common/Link";
 import Button from "@/shared/views/components/common/Button";
 import { ROUTE_PATHS } from "@/app/routes";
 import { authController } from "@/features/auth/controllers/authController";
 import IconMenu from "@/shared/icons/IconMenu";
-import { responsiveIconSize } from "@/lib/config/tailwind";
 import { Popup } from "@progress/kendo-react-popup";
 import useClickOutside from "@/shared/hooks/useClickOutside";
 import useCloseOnBreakpoint from "@/shared/hooks/useCloseOnBreakpoint";
 import HeaderMenuLinks from "@/shared/views/components/common/HeaderMenuLinks";
+import Icon from "@/shared/views/components/common/Icon";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,11 +34,7 @@ function Header() {
   return (
     <header className="bg-[var(--color-bg)] text-[var(--color-text-primary)]">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link
-          to={ROUTE_PATHS.HOME}
-          draggable={false}
-          className="text-xl font-bold"
-        >
+        <Link to={ROUTE_PATHS.HOME} draggable={false} className="!text-xl">
           Logo
         </Link>
 
@@ -52,7 +48,7 @@ function Header() {
             variant="secondary"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           >
-            <IconMenu aria-hidden="true" className={responsiveIconSize} />
+            <Icon icon={IconMenu} />
           </Button>
         </div>
       </div>

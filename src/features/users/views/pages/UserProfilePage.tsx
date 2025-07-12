@@ -36,12 +36,7 @@ function UserProfilePage() {
       aria-labelledby="user-profile-title"
     >
       <header className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 text-center sm:text-left">
-        <h1
-          id="user-profile-title"
-          className="text-3xl sm:text-4xl font-bold text-gray-800 dark:text-gray-200"
-        >
-          User Profile
-        </h1>
+        <h1 id="user-profile-title">User Profile</h1>
       </header>
       <section className="justify-items-center">
         <UserCard user={currentUser} />

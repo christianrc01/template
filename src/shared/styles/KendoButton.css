@@ -1,10 +1,9 @@
 /* --- Base Kendo Button --- */
 .k-button {
-  @apply py-2 px-3 text-sm font-bold font-[inherit] cursor-pointer;
-  @apply transition-all duration-250;
+  @apply py-2 px-3 rounded-4xl gap-2.5 cursor-pointer;
+  @apply text-sm font-bold font-[inherit];
   @apply focus:outline-1 focus:outline-[var(--color-text-primary)];
-  @apply rounded-full px-4;
-  @apply hover:[opacity:0.9] dark:hover:[opacity:0.9];
+  @apply hover:[opacity:0.9];
   @apply transition-opacity duration-200;
 }
 

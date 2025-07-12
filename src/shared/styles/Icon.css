@@ -1,0 +1,17 @@
+/* --- Base Icons --- */
+.k-icon {
+  @apply w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 flex-shrink-0;
+}
+
+/* Variants */
+.k-icon-success {
+  @apply text-[var(--color-green-100)];
+}
+
+.k-icon-danger {
+  @apply text-[var(--color-error)];
+}
+
+.k-icon-muted {
+  @apply text-[var(--color-charcoal)];
+}

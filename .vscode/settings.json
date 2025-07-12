@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["Accessi", "acsb", "Msal"],
+  "cSpell.words": ["Accessi", "acsb", "Coconat", "Msal"],
   "css.lint.unknownAtRules": "ignore",
   "editor.codeActionsOnSave": {
     "source.fixAll.stylelint": "always"

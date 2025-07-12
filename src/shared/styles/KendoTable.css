@@ -1,4 +1,11 @@
 /* --- Base Kendo Table --- */
+.k-grid,
+.k-table,
+.k-pager,
+.k-toolbar {
+  font-size: var(--font-size-15);
+}
+
 .k-grid-pager {
   @apply !bg-white dark:!bg-gray-700 rounded-b-2xl;
 }

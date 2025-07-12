@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
 import Button from "@/shared/views/components/common/Button";
 import type { HeaderMenuLinksProps } from "@/shared/types/IShared";
 import { Fragment } from "react";
+import Link from "@/shared/views/components/common/Link";
 
 function HeaderMenuLinks({
   links,

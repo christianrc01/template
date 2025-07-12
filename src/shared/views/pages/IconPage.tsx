@@ -23,6 +23,8 @@ import IconTeacher from "@/shared/icons/IconTeacher";
 import IconTickCircle from "@/shared/icons/IconTickCircle";
 import IconUser from "@/shared/icons/IconUser";
 import IconCard from "@/shared/views/components/common/IconCard";
+import Text from "@/shared/views/components/common/Text";
+import Icon from "@/shared/views/components/common/Icon";
 
 function IconPage() {
   return (
@@ -31,34 +33,46 @@ function IconPage() {
         aria-labelledby="welcome-title"
         className="max-w-xl sm:max-w-2xl w-full bg-[var(--color-bg)] rounded-xl shadow-lg p-6 sm:p-8 md:p-12 text-center mx-2 sm:mx-0"
       >
-        <h2 className="text-xl font-bold mb-6 text-[var(--color-text-primary)]">
+        <Text as="h2" className="mb-6">
           Available icons
-        </h2>
+        </Text>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <IconCard icon={<IconArrow />} name="IconArrow" />
-          <IconCard icon={<IconArrowBold />} name="IconArrowBold" />
-          <IconCard icon={<IconBuilding />} name="IconBuilding" />
-          <IconCard icon={<IconBuildings />} name="IconBuildings" />
-          <IconCard icon={<IconCalendar />} name="IconCalendar" />
-          <IconCard icon={<IconCalendarNew />} name="IconCalendarNew" />
-          <IconCard icon={<IconCloseCircle />} name="IconCloseCircle" />
-          <IconCard icon={<IconCloseSquare />} name="IconCloseSquare" />
-          <IconCard icon={<IconCode />} name="IconCode" />
-          <IconCard icon={<IconInfo />} name="IconInfo" />
-          <IconCard icon={<IconLink />} name="IconLink" />
-          <IconCard icon={<IconLocation />} name="IconLocation" />
-          <IconCard icon={<IconMail />} name="IconMail" />
-          <IconCard icon={<IconMenu />} name="IconMenu" />
-          <IconCard icon={<IconPeople />} name="IconPeople" />
-          <IconCard icon={<IconProfile />} name="IconProfile" />
-          <IconCard icon={<IconQuestion />} name="IconQuestion" />
-          <IconCard icon={<IconSearch />} name="IconSearch" />
-          <IconCard icon={<IconSort />} name="IconSort" />
-          <IconCard icon={<IconStar />} name="IconStar" />
-          <IconCard icon={<IconTag />} name="IconTag" />
-          <IconCard icon={<IconTeacher />} name="IconTeacher" />
-          <IconCard icon={<IconTickCircle />} name="IconTickCircle" />
-          <IconCard icon={<IconUser />} name="IconUser" />
+          <IconCard icon={<Icon icon={IconArrow} />} name="IconArrow" />
+          <IconCard icon={<Icon icon={IconArrowBold} />} name="IconArrowBold" />
+          <IconCard icon={<Icon icon={IconBuilding} />} name="IconBuilding" />
+          <IconCard icon={<Icon icon={IconBuildings} />} name="IconBuildings" />
+          <IconCard icon={<Icon icon={IconCalendar} />} name="IconCalendar" />
+          <IconCard
+            icon={<Icon icon={IconCalendarNew} />}
+            name="IconCalendarNew"
+          />
+          <IconCard
+            icon={<Icon icon={IconCloseCircle} />}
+            name="IconCloseCircle"
+          />
+          <IconCard
+            icon={<Icon icon={IconCloseSquare} />}
+            name="IconCloseSquare"
+          />
+          <IconCard icon={<Icon icon={IconCode} />} name="IconCode" />
+          <IconCard icon={<Icon icon={IconInfo} />} name="IconInfo" />
+          <IconCard icon={<Icon icon={IconLink} />} name="IconLink" />
+          <IconCard icon={<Icon icon={IconLocation} />} name="IconLocation" />
+          <IconCard icon={<Icon icon={IconMail} />} name="IconMail" />
+          <IconCard icon={<Icon icon={IconMenu} />} name="IconMenu" />
+          <IconCard icon={<Icon icon={IconPeople} />} name="IconPeople" />
+          <IconCard icon={<Icon icon={IconProfile} />} name="IconProfile" />
+          <IconCard icon={<Icon icon={IconQuestion} />} name="IconQuestion" />
+          <IconCard icon={<Icon icon={IconSearch} />} name="IconSearch" />
+          <IconCard icon={<Icon icon={IconSort} />} name="IconSort" />
+          <IconCard icon={<Icon icon={IconStar} />} name="IconStar" />
+          <IconCard icon={<Icon icon={IconTag} />} name="IconTag" />
+          <IconCard icon={<Icon icon={IconTeacher} />} name="IconTeacher" />
+          <IconCard
+            icon={<Icon icon={IconTickCircle} />}
+            name="IconTickCircle"
+          />
+          <IconCard icon={<Icon icon={IconUser} />} name="IconUser" />
         </div>
       </section>
     </div>
